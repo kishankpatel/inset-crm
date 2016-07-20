@@ -67,7 +67,8 @@
             /    =f.submit "Update",:id=>"prof_update", :onclick => "return chk_file_present()", :class=>"btn btn-primary btn-sm", :disable_with => "Updating...." ,:style=>"display:none"        
         .col-md-8.prof_addr
           %div
-            = @user.full_name
+            %span.full-name{style: 'color: #343434'}
+              = @user.full_name
             %span 
               (
               - if @user.admin_type == 1
@@ -289,7 +290,8 @@
           return 'Please enter first name';
        
       },
-      success: function(data) {       
+      success: function(data) {
+        $('.full-name').html(data);
       },
       error: function(data) {
         var msg = '';
@@ -313,7 +315,8 @@
           return 'Please enter last name';
        
       },
-      success: function(data) {       
+      success: function(data) {
+        $('.full-name').html(data);
       },
       error: function(data) {
         //alert('error') 

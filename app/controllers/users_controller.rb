@@ -174,7 +174,7 @@ class UsersController < ApplicationController
       @user.update_attributes({time_zone: params[:value]})
     end
     # expire_fragment("user_menu_#{@user .id}") #if fragment_exist?("user_menu_#{@user .id}")
-    render :text => 'success'
+    render :text => @user.full_name
   end
   
   def resend_invitation

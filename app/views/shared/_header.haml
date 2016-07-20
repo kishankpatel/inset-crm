@@ -156,13 +156,13 @@
                     = image_tag current_user.image.image.url(:thumb), :alt=>"", :class=>"profile-circle fl",:id=>"profile_icon_img"
                   - else
                     = image_tag "no_user30.png", :alt=>"dummy user", :class=>"profile-circle fl",:id=>"profile_icon_img"
-                .fl.disp
+                .fl.disp.full-name
                   =current_user.full_name.blank? ? current_user.organization.name : current_user.full_name
                 .fr.dwn_f_arrow
               %ul.dropdown-menu
                 %li
                   %div{style: "text-align:left;margin-left:20px"}
-                    %b
+                    %b.full-name
                       =current_user.full_name
                     - unless current_user.is_siteadmin?
                       %div{style: "font-size:13px"}
