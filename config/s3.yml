@@ -1,0 +1,14 @@
+production:
+  #bucket: SalesCafe_Live
+  bucket: wakeupsales
+  access_key_id: AKIAJAVFGWOGKGBOWPWQ
+  secret_access_key: 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
+  
+development:
+  bucket: wakeupsales
+  access_key_id: AKIAJAVFGWOGKGBOWPWQ
+  secret_access_key: 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
+staging:
+  bucket: SalesCafe
+  access_key_id: AKIAJAVFGWOGKGBOWPWQ
+  secret_access_key: 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

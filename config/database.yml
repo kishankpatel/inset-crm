@@ -1,0 +1,42 @@
+# MySQL.  Versions 4.1 and 5.0 are recommended.
+# 
+# Install the MYSQL driver
+#   gem install mysql2
+#
+# Ensure the MySQL gem is defined in your Gemfile
+#   gem 'mysql2'
+#
+# And be sure to use new-style password hashing:
+#   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
+development:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false  
+  database: wakeupsales
+  pool: 5
+  username: root
+  password: password
+  port: 3306
+
+# development:
+#   adapter: mysql2
+#   encoding: utf8
+#   reconnect: false
+#   database: cafecrm
+#   pool: 5
+#   host: 192.168.2.110
+#   username: cafecrm
+#   password: cafecrm321
+#   socket: /var/lib/mysql/mysql.sock
+
+# production:
+#   adapter: mysql2
+#   encoding: utf8
+#   reconnect: false
+#   database: wakeupsales
+#   host: wakeupsales.cecbncxwd0ul.us-east-1.rds.amazonaws.com
+#   pool: 100
+#   username: admin
+#   password: wak32rt7bhi
+#   socket: /var/lib/mysql/mysql.sock
+#   wait_timeout: 300
