@@ -18,20 +18,20 @@
       = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html=>{:class => "form"}) do |f|
         = devise_error_messages!
         .form-group          
-          = f.text_field  :organization_name, :required => true, :class=>"form-control", :placeholder=>"Organization Name"
+          = f.text_field  :organization_name, :required => true, :class=>"form-control", :placeholder=>"Organization Name", :style=>"height:50px;font-size: 17px;"
         .form-group
-          = f.email_field :email, :required => true, :class=>"form-control", :placeholder=>"Email" 
+          = f.email_field :email, :required => true, :class=>"form-control", :placeholder=>"Email", :style=>"height:50px;font-size: 17px;"
         .form-group
-          = f.text_field  :organization_website, :required => true, :class=>"form-control", :placeholder=>"Website"
+          = f.text_field  :organization_website, :required => true, :class=>"form-control", :placeholder=>"Website", :style=>"height:50px;font-size: 17px;"
         .form-group
           
-          = f.select :organization_size, CompanyStrength.find(:all).collect {|c| [ c.range, c.id ]}, {:include_blank => '- Organization Size -'},  :required => "true", :class=>"form-control"
+          = f.select :organization_size, CompanyStrength.find(:all).collect {|c| [ c.range, c.id ]}, {:include_blank => '- Organization Size -'},  :required => "true", :class=>"form-control", :style=>"height:50px;font-size: 17px;"
         .form-group
-          = f.password_field :password, :required => true, :class=>"form-control", :placeholder=>"Password"
+          = f.password_field :password, :required => true, :class=>"form-control", :placeholder=>"Password", :style=>"height:50px;font-size: 17px;"
         .form-group
-          = f.password_field :password_confirmation, :required => true, :class=>"form-control", :placeholder=>"Password Confirmation" 
+          = f.password_field :password_confirmation, :required => true, :class=>"form-control", :placeholder=>"Password Confirmation", :style=>"height:50px;font-size: 17px;"
         .form-group
-          = f.submit "Sign up", :class=>"btn btn-lg btn-success btn-block"
+          = f.submit "Sign up", :class=>"btn btn-primary"
       .form-group
         = render "devise/shared/links"
 = stylesheet_link_tag "home"
