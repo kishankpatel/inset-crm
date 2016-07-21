@@ -29,7 +29,7 @@
   
 .navbar.navbar-default{role: "navigation"}
   .container
-    /- cache("header_logo") do
+    /- cache("header_logo", skip_digest: true) do
     .navbar-header
       %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", type: "button"}
         %span.sr-only Toggle navigation
@@ -45,7 +45,7 @@
       %input{:type=>"hidden",:id=>"hdn_sqllite",:value=>"0"}
       .navbar-collapse.collapse
         %ul.nav.navbar-nav.hmenu#menu-top-nav-menu
-          - cache("dashboard_menu") do
+          - cache('dashboard_menu', skip_digest: true) do
             %li#home{class: "#{params[:action] =='dashboard'   ? 'activ_mnu' : ''}"}
               =link_to (user_signed_in? ? "/dashboard" : "/") do
                 .fl.ic_dash
@@ -67,7 +67,7 @@
                 .fl.slide_m Leads
                 .cb
                 %b{class: "#{params[:controller] == 'deals' ? 'caret nav_menu_ovd' : ''}"}
-              - cache("admin_#{@current_user.is_admin?}") do
+              - cache("admin_#{@current_user.is_admin?}", skip_digest: true) do
                 %li#tasks{class: "#{params[:controller] == 'tasks' ? 'activ_mnu' : ''}"}
                   %a{href: "/tasks"}
                     .fl.ic_task
@@ -102,7 +102,7 @@
                       %b{class: "#{params[:action] == 'getting_started' ? 'caret nav_menu_ovd' : ''}"}
         %input{:type=>"hidden",:id=>"session_authenticity_token",:value=>session[:_csrf_token]}
         %ul.nav.navbar-nav.navbar-right.f_disp
-          - cache("header_right_menu_admin_#{@current_user.is_admin?}") do
+          - cache("header_right_menu_admin_#{@current_user.is_admin?}", skip_digest: true) do
             - unless current_user.is_siteadmin?
               %li.border-box
                 %div{onclick: "sch_slide()"}
@@ -149,20 +149,20 @@
             = render partial: "shared/notification_section" unless current_user.is_siteadmin?
 
           %li
-            - cache("user_menu_#{@current_user.id}") do
+            - cache("user_menu_#{@current_user.id}", skip_digest: true) do
               %a#notification_image2.dropdown-toggle.image-effect{"data-toggle" => "dropdown", href: "#"}
                 .fl
                   - if current_user.image.present? && current_user.image.image.present?
                     = image_tag current_user.image.image.url(:thumb), :alt=>"", :class=>"profile-circle fl",:id=>"profile_icon_img"
                   - else
                     = image_tag "no_user30.png", :alt=>"dummy user", :class=>"profile-circle fl",:id=>"profile_icon_img"
-                .fl.disp
+                .fl.disp.full-name
                   =current_user.full_name.blank? ? current_user.organization.name : current_user.full_name
                 .fr.dwn_f_arrow
               %ul.dropdown-menu
                 %li
                   %div{style: "text-align:left;margin-left:20px"}
-                    %b
+                    %b.full-name
                       =current_user.full_name
                     - unless current_user.is_siteadmin?
                       %div{style: "font-size:13px"}

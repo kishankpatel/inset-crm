@@ -161,20 +161,20 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
-    
+
   def save_profile_info
     @user = User.find params[:name]
-    if params[:pk] == "1"
-     @user.update_column :first_name, params[:value]
-    elsif params[:pk] == "2"
-     @user.update_column :last_name, params[:value]
-    elsif params[:pk] == "3"
-     @user.phone.update_column :phone_no, params[:value]
-    elsif params[:pk] == "4"
-     @user.update_column :time_zone, params[:value]
+    if params[:pk] == '1'
+      @user.update_attributes({first_name: params[:value]})
+    elsif params[:pk] == '2'
+      @user.update_attributes({last_name: params[:value]})
+    elsif params[:pk] == '3'
+      @user.phone.update_attributes({phone_no: params[:value]})
+    elsif params[:pk] == '4'
+      @user.update_attributes({time_zone: params[:value]})
     end
-    expire_fragment("user_menu_#{@user .id}") #if fragment_exist?("user_menu_#{@user .id}")
-    render :text => "success"
+    # expire_fragment("user_menu_#{@user .id}") #if fragment_exist?("user_menu_#{@user .id}")
+    render :text => @user.full_name
   end
   
   def resend_invitation
