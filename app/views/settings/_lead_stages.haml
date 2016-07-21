@@ -1,0 +1,92 @@
+.mtop30
+  .navbar-right
+    %a#addnewlabel.easyui-linkbutton{href: '#leadStageModal', 'data-toggle' => 'modal', onclick: '$("#lead_error").hide();'}
+      %button.btn.btn-primary.pad2{type: 'button'}
+        %span.glyphicon.glyphicon-plus-sign
+        New Lead Stage
+  %h4 Manage Lead Stages
+.table-responsive.mtop30
+  %div{style: 'border: 1px solid #DAD7D7;padding: 27px;min-height: 294px;height: auto;'}
+    .row
+      .col-md-10.col-md-offset-1
+        %select.dual_list_box{:multiple => 'multiple', :name => 'lead_stages[]', :size => '10'}
+          = current_user.organization.deal_statuses.each do |deal_status|
+            %option{{:value => deal_status.id}.merge(deal_status.is_active ? {selected: 'selected'} : {})}
+              = deal_status.name
+        %br
+        %span.text-danger#error_content{style: 'display: none'}
+          %p Selected Lead Stages can't be empty
+          %br
+        %a{href: 'javascript:', class: 'btn btn-primary', value: 'Save', onclick: 'submitData(); return false;'}Save
+
+#leadStageModal.modal.fade{'aria-hidden' => 'true', 'aria-labelledby' => 'myModalLabel', role: 'dialog', tabindex: '-1'}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{'aria-hidden' => 'true', type: 'button', 'data-dismiss' => 'modal'} &times;
+        %h4.modal-title Add Lead Stage
+      .modal-body
+        = form_for(DealStatus.new, :url => '', :html=>{:class => 'form', onsubmit: 'addLeadStage(); return false;'}) do |f|
+          .row#lead_error
+            .form-group.col-md-12
+              %p.text-danger Failed to add Lead Stage. Please try again.
+          .row
+            .form-group.col-md-12
+              =f.text_field :name, :required => true, :class=> 'col-md-12 form-control', :maxlength=> '50', :style=> 'height:41px; resize: none;', :placeholder => 'Lead Stage Name*'
+          .modal-footer
+            .pull-left
+              %button.btn.btn-primary{type: 'submit', id: 'deal_submit_btn'} Save
+              %a{href:'javascript:', 'aria-hidden' => 'true', 'data-dismiss' => 'modal'}
+                %span.c_links
+                  Cancel
+
+:javascript
+  var dualListBox = $('.dual_list_box').bootstrapDualListbox({
+    nonSelectedListLabel: 'Available Lead Stages',
+    selectedListLabel: 'Selected Lead Stages',
+    preserveSelectionOnMove: 'moved',
+    moveOnSelect: false,
+  });
+
+  function submitData() {
+    var selectedStages = $('[name="lead_stages[]"]').val()
+    if (selectedStages == null || selectedStages == undefined || selectedStages == "") {
+      $("#error_content").show();
+      return false;
+    }
+    else {
+      $("#error_content").hide();
+    }
+
+    $.ajax({
+      url: 'settings/update_lead_stages',
+      type: 'POST',
+      data: {stages: selectedStages},
+      success: function(res) {
+        $(document).trigger("add-alerts", [{'message': "Settings for lead stages updated successfully.",'priority': 'info'}]);
+      },
+      error: function(res) {
+        $(document).trigger("add-alerts", [{'message': "Failed to update settings for lead stages.",'priority': 'warning'}]);
+      }
+    });
+  }
+
+  function addLeadStage() {
+    var leadStage = $("#deal_status_name").val();
+    $.ajax({
+      url: 'settings/add_lead_stage',
+      type: 'POST',
+      data: {name: leadStage},
+      success: function(res) {
+        $("#leadStageModal").modal('hide');
+        $('#leadStageModal').on('hidden.bs.modal', function () {
+          $('#lead_stages').html('').html(res);
+        })
+      },
+      error: function(res) {
+        $("#lead_error").show();
+      }
+    });
+  }
+
+

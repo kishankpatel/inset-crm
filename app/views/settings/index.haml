@@ -16,8 +16,8 @@
               %li.hd_active
                 %a{ href: "#"}Public
 
-              %li.c_acn#li_feed
-                %a{ href: "#", :onclick=>"display_section('feed')"} Feed Keywords
+              %li.c_acn#li_lead_stages
+                %a{ href: "#", :onclick=>"display_section('lead_stages')"} Lead Stages
 
               %li.c_acn#li_sns
                 %a{ href: "#", :onclick=>"display_sectionajax('sns')"} SNS Medias
@@ -38,7 +38,7 @@
               %li.hd_active
                 %a{ href: "#"}Account
               - if current_user.is_super_admin?
-                
+
                 %li.c_acn#li_org
                   %a{ href: "#", :onclick=>"display_sectionajax('org')"} Organization
                 %li.c_acn#li_priority
@@ -58,8 +58,8 @@
           .cb10
         .col-md-10
           - if user_signed_in?
-            #feed
-              = render :partial=> "feeds"   
+            #lead_stages
+              = render :partial=> "lead_stages"
             #sns{:style=>"display:none"}
             #widgets{:style=>"display:none"}
             #chart{:style=>"display:none"}
@@ -72,10 +72,10 @@
             #user_label{:style=>"display:none"}
             #email_notification{:style=>"display:none"}
             #api_token{:style=>"display:none"}
-            #weekly_digest{:style=>"display:none"}            
+            #weekly_digest{:style=>"display:none"}
         .cb
-      
-:javascript 
+
+:javascript
   function display_section(tab){
   //alert($('.col-md-10').find('.active').html());
    $('.col-md-10').find('.active').css('display','none');
@@ -102,27 +102,25 @@
   $(function() { 
    var settings = window.location.hash.replace("#","")
    if(window.location.hash == "")
-     display_section('feed')
+     display_section('lead_stages')
    else
      display_section(settings)
-   $('#tags_feed_keywords_settings').tagsInput({'defaultText':'Click to add'});
-   $('#tags_feed_keywords_settings_tag').css('width','90px');
   });
-  function save_feeds_org(){
-    //$('#feed_submit_btn').prop("disabled", true).html("Please wait...");
-    var feed = $('#tags_feed_keywords_settings').val();
-    $.ajax({
-      beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
-      type: "POST",
-      url: "settings/update_feed_keyword_org",
-      data: {keywords:feed},
-      success: function(data){ 
-        //$('#feed').html(data);  
-        $(document).trigger("add-alerts", [{'message': "Settings for Feed keywords updated successfully.",'priority': 'info'}]);
-      },
-      error: function(data){
-        alert('got an error');
-      }
-    });  
-  }
-        
+
+  // function save_feeds_org(){
+  //   var feed = $('#tags_feed_keywords_settings').val();
+  //   $.ajax({
+  //     beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+  //     type: "POST",
+  //     url: "settings/update_feed_keyword_org",
+  //     data: {keywords:feed},
+  //     success: function(data){
+  //       //$('#feed').html(data);
+  //       $(document).trigger("add-alerts", [{'message': "Settings for Feed keywords updated successfully.",'priority': 'info'}]);
+  //     },
+  //     error: function(data){
+  //       alert('got an error');
+  //     }
+  //   });
+  // }
+

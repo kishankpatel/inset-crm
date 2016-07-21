@@ -85,6 +85,32 @@ class SettingsController < ApplicationController
    end
    render :partial => "feeds"
   end
+
+  # POST settings/add_lead_stage
+   def add_lead_stage
+     render(text: 'failed', status: :not_acceptable) && return if params[:name].blank?
+     deal_status = current_user.organization.deal_statuses.new({name: params[:name]})
+     last_status = current_user.organization.deal_statuses.order('original_id desc').first
+     deal_status.original_id = last_status.present? ? last_status.original_id.to_i + 1 : 1
+     if deal_status.save
+       render partial: 'lead_stages', status: :ok
+     else
+       render text: 'success', status: :internal_server_error
+     end
+   end
+
+   # POST settings/update_lead_stages
+   def update_lead_stages
+     begin
+       selected_statges = current_user.organization.deal_statuses.where('id IN (?)', params[:stages])
+       unselected_statges = current_user.organization.deal_statuses.where('id NOT IN (?)', params[:stages])
+       unselected_statges.update_all({is_active: false})
+       selected_statges.update_all({is_active: true})
+       render text: 'success', status: :ok
+     rescue
+       render text: 'success', status: :internal_server_error
+     end
+   end
   
   
   def update_widget_org

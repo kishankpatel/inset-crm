@@ -20,6 +20,7 @@
  *= require jquery.powertip
  *= require datepicker
  *= require jquery.wysiwyg
+ *= require bootstrap-duallistbox
  *= require_self
  */
   .twitter-typeahead {

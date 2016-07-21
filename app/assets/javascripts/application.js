@@ -37,6 +37,7 @@
 //= require jquery.ui.datepicker
 //= require jquery.ui.core
 //= require jquery.wysiwyg
+//= require bootstrap-duallistbox
 
 //= require_self
 
