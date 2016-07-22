@@ -1,6 +1,6 @@
 class DealStatus < ActiveRecord::Base
   belongs_to :organization
-  attr_accessible :name, :original_id, :organization_id
+  attr_accessible :name, :original_id, :organization_id, :is_active
   
   #to get the priority name as per organization
   def self.get_deal_name deal_original_id, org

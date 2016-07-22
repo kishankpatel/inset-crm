@@ -104,8 +104,10 @@ class SettingsController < ApplicationController
      begin
        selected_statges = current_user.organization.deal_statuses.where('id IN (?)', params[:stages])
        unselected_statges = current_user.organization.deal_statuses.where('id NOT IN (?)', params[:stages])
-       unselected_statges.update_all({is_active: false})
-       selected_statges.update_all({is_active: true})
+       unselected_statges.update_all({is_active: false, original_id: 0})
+       selected_statges.each_with_index do |stage, index|
+         stage.update_attributes({is_active: true,  original_id: (index + 1)})
+       end
        render text: 'success', status: :ok
      rescue
        render text: 'success', status: :internal_server_error
