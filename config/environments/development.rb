@@ -46,7 +46,7 @@ SalesCafe::Application.configure do
   config.assets.debug = true
   config.action_mailer.perform_deliveries = true
   # config.action_mailer.default_url_options = { :host => 'staging.wakeupsales.com' }
-  config.action_mailer.default_url_options = { :host => 'wakeupsales.com' }
+  config.action_mailer.default_url_options = { :host => 'wakeup-saas.us-east-1.elasticbeanstalk.com' }
   
    # config.action_mailer.delivery_method = :smtp
    # ActionMailer::Base.smtp_settings = {
