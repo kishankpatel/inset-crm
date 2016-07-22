@@ -146,6 +146,14 @@
   .row
     .cb10
     .cb10
+    #sortable
+      - current_user.organization.deal_statuses.where({is_active: true}).order('original_id asc').each do |deal_status|
+        .col-md-2.ui-state-default
+          .btn.btn-default{style: 'margin-bottom: 5px'}
+            = deal_status.name
+  .row
+    .cb10
+    .cb10
     .col-md-12
       #alert-msg.alert.fade.in.alert-danger{style: "display:none;"}
         %button.close{onclick: "$('#alert-msg').hide();$('#task_loader').hide();"} x
@@ -807,6 +815,21 @@
     }
   }
   $(function() {
+    $( "#sortable" ).sortable({
+      stop: function(event, ui) {
+        var data = {};
+        $("#sortable .col-md-2").each(function(i, el){
+          data[$.trim($(el).text())] = $(el).index() + 1;
+        });
+        console.log(data);
+        $.ajax({
+          url: 'settings/update_stage_sequence',
+          type: 'POST',
+          data: {sorted: data}
+        });
+      }
+    });
+
     $('#deal_from').datepicker({dateFormat: 'dd-mm-yy',autoclose: true})
     $('#deal_to').datepicker({dateFormat: 'dd-mm-yy',autoclose: true})
 
