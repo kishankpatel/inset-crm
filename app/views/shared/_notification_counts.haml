@@ -11,14 +11,14 @@
           %span.pull-left
             %span.deal-mid
             = new_deals_count
-            New Deals assigned
+            New Leads assigned
     - else
       %a{href: "/leads"}
         .clearfix
           %span.pull-left
             %span.deal-mid
             = new_deals_count
-            New Deals
+            New Leads
 - if qualified_deals_count > 0
   %li.divider
   %li
@@ -27,7 +27,7 @@
         %span.pull-left
           %span.deal-mid
           =qualified_deals_count
-          Qualified Deals           
+          Qualified Leads           
 - if badge_overdue.to_i > 0
   %li.divider
   %li
