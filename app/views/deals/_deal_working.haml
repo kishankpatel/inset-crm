@@ -1,7 +1,7 @@
 #deallist.col-md-12.deallist
   .w-box.tab-pane.active.in.wbox-customize
     %div.table-responsive
-      %table#dataTableWorking.table.table-condensed.table-hover.table-striped{:style=>"border-bottom: 1px solid #C3C3C3;width: 100% !important;", :cellspacing=>"0","data-source"=>deals_url(format: 'json',params: {cuser: current_user.id,_type: 'working',filtertype: params[:filtertype],filtervalue: params[:filtervalue]})}
+      %table#dataTableWorking.table.table-condensed.table-hover.table-striped{:style=>"border-bottom: 1px solid #C3C3C3;width: 100% !important;", :cellspacing=>"0","data-source"=>leads_url(format: 'json',params: {cuser: current_user.id,_type: 'working',filtertype: params[:filtertype],filtervalue: params[:filtervalue]})}
         %thead
           %tr
             %th.dropdown#deal_label_menu{style: "font-size:18px;color:#F59106;"}
@@ -106,11 +106,11 @@
                       <a onclick=\"$('#send-mail-popup').get(0).reset();$('#to').val('"+ row[8] +"');$('#mailer_id').val(" + row[0] + ");$('#mailer_type').val('Deal');$('#email_contact_id').val(" + row[14] + ");$('#email_contact_type').val('"+ row[18] +"');reset_email_err_msg();\" href='javascript:' data-toggle='modal' data-target='#SendEmailModal'>Send Email</a> \
                     </li>\
                     <li> \
-                      <a href='/deals/" + row[0] + "/edit'>Edit</a> \
+                      <a href='/leads/" + row[0] + "/edit'>Edit</a> \
                     </li>"
                     if(row[23] == "true"){
                     str+="<li> \
-                      <a rel='nofollow' data-method='delete' data-confirm='Are you sure?' href='/deals/" + row[0] + "'>Delete</a> \
+                      <a rel='nofollow' data-method='delete' data-confirm='Are you sure?' href='/leads/" + row[0] + "'>Delete</a> \
                     </li>";
                     }
                     str+="<li> \

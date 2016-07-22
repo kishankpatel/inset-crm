@@ -229,7 +229,7 @@ def send_email
   end
   def get_url
     if self.taskable.present?
-      self.taskable.class.name == "Deal" ? "/deals/"+ self.taskable.id.to_s : (self.taskable.class.name == "CompanyContact" ? "/company_contact/"+ self.taskable.id.to_s : "/individual_contact/"+ self.taskable.id.to_s)
+      self.taskable.class.name == "Deal" ? "/leads/"+ self.taskable.id.to_s : (self.taskable.class.name == "CompanyContact" ? "/company_contact/"+ self.taskable.id.to_s : "/individual_contact/"+ self.taskable.id.to_s)
     end
   end
   

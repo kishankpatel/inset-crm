@@ -207,7 +207,7 @@
                               - if user.present?
 
                                 %span.ic_assign                         
-                                %a{href: "/deals?created_by=#{deal.initiated_by}"}
+                                %a{href: "/leads?created_by=#{deal.initiated_by}"}
                                   #{(user_name=user.id) == current_user.id ? "me" : deal.initiator.first_name}
                           .cb
                             %div 
@@ -287,7 +287,7 @@
                             .fr{rel: "tooltip", title: "By"}     
                               %span.ic_assign                          
                               - if deal_move.user.present?
-                                %a{href: "/deals?created_by=#{deal_move.user.id}"}
+                                %a{href: "/leads?created_by=#{deal_move.user.id}"}
                                   #{(deal_move.user_id) == current_user.id ? "me" : (deal_move.user.present? ? deal_move.user.first_name : "")}
                               - else
                                 #{(deal_move.user_id) == current_user.id ? "me" : (deal_move.user.present? ? deal_move.user.first_name : "")}
@@ -323,7 +323,7 @@
                             .fr{rel: "tooltip", title: "Assigned To"}     
                               %span.ic_assign                          
                               - if mail_letter.user.present?
-                                %a{href: "/deals?created_by=#{mail_letter.user.id}"}
+                                %a{href: "/leads?created_by=#{mail_letter.user.id}"}
                                   #{(mail_letter.user.id) == current_user.id ? "me" : (mail_letter.user.present? ? mail_letter.user.first_name : "")}
                               - else
                                 #{(mail_letter.user.id) == current_user.id ? "me" : (mail_letter.user.present? ? mail_letter.user.first_name : "")}

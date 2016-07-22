@@ -153,7 +153,7 @@ def createLead
                    subject = "web-" + sourc
                 end
                 
-                lnk= ENV['url'] +"deals/" + deal.id.to_s
+                lnk= ENV['url'] +"leads/" + deal.id.to_s
                 if params[:phone].present?
                  contact_phone = "(+" + cntry.to_s + ")" + params[:phone].to_s 
                 end

@@ -87,7 +87,7 @@
   .fr.fnt30
     - if @last_deal.present?
       - tooltip_text = ("#{@last_closed_deal.title}").html_safe
-      = link_to deal_url(@last_closed_deal), style: "font-size:15px", rel: "tooltip", title: "#{tooltip_text}" do
+      = link_to lead_url(@last_closed_deal), style: "font-size:15px", rel: "tooltip", title: "#{tooltip_text}" do
         /= truncate(@last_closed_deal.title, :length => 15, :omission => '...')
         = @last_close_deal_date
     - else

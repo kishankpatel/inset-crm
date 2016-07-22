@@ -155,7 +155,7 @@
     }else{
       action="/start_task";
     }
-    is_deal= (document.location.href.toString().split(document.location.host)[1].indexOf("/deals")== 0);
+    is_deal= (document.location.href.toString().split(document.location.host)[1].indexOf("/leads")== 0);
     is_dashboard= (document.location.href.toString().split(document.location.host)[1].indexOf("/dashboard")== 0) || (document.location.href.toString().split(document.location.host)[1] == "/");
     is_contact= (document.location.href.toString().split(document.location.host)[1].indexOf("/contacts")== 0);
     is_task= (document.location.href.toString().split(document.location.host)[1].indexOf("/tasks")== 0);
@@ -229,7 +229,7 @@
               var call_id = "#{@current_organization.task_types.where(:name => "Call").first.id if !@current_organization.task_types.where(:name => "Call").nil? && !@current_organization.task_types.where(:name => "Call").blank?}";
               if("#{@current_user.is_admin? || @current_user.is_super_admin?}" == "true"){
                 if(data.responseJSON.owndeal != 0)
-                  $("#usage_won_deal").html("<a href='/deals?type=won' style='color:#49AFCD'>"+data.responseJSON.owndeal+"</a>");
+                  $("#usage_won_deal").html("<a href='/leads?type=won' style='color:#49AFCD'>"+data.responseJSON.owndeal+"</a>");
                 else
                   $("#usage_won_deal").html(data.responseJSON.owndeal);
                 if(data.responseJSON.call_cmpl != 0)
@@ -251,7 +251,7 @@
                 $("#usage_nurtured_deal").html(data.responseJSON.leadsnortured);
               }
               if(data.responseJSON.lostdeal != 0)
-                $("#usage_lost_deal").html("<a href='/deals?type=lost' style='color:#78808A'>"+data.responseJSON.lostdeal+"</a>");
+                $("#usage_lost_deal").html("<a href='/leads?type=lost' style='color:#78808A'>"+data.responseJSON.lostdeal+"</a>");
               else
                 $("#usage_lost_deal").html(data.responseJSON.lostdeal);
               }

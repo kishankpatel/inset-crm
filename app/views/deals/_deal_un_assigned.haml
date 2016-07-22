@@ -1,5 +1,5 @@
 .table-responsive
-  %table#dataTable_un_assigned.table.white-table.table-hover{"data-source"=>deals_url(format: 'json',params: {cuser: current_user.id,_type: 'un_assigned',filtertype: params[:filtertype],filtervalue: params[:filtervalue], assigned_to: params[:assigned_to], created_by: params[:created_by], cre_by: cookies[:cre_by], cre_by_val: cookies[:cre_by_val], asg_by: cookies[:asg_by], asg_by_val: cookies[:asg_by_val], loc: cookies[:loc], loc_val: cookies[:loc_val], priority: cookies[:priority], priority_val: cookies[:priority_val], daterange: cookies[:daterange],last_touch: cookies[:last_touch],last_tch: cookies[:last_tch], dt_range: cookies[:dt_range], dtrange_from: cookies[:dtrange_from], dt_range_from: cookies[:dt_range_from], dtrange_to: cookies[:dtrange_to], dt_range_to: cookies[:dt_range_to],q: cookies[:deal_quarter], y: cookies[:deal_year], tag: cookies[:tag]})}
+  %table#dataTable_un_assigned.table.white-table.table-hover{"data-source"=>leads_url(format: 'json',params: {cuser: current_user.id,_type: 'un_assigned',filtertype: params[:filtertype],filtervalue: params[:filtervalue], assigned_to: params[:assigned_to], created_by: params[:created_by], cre_by: cookies[:cre_by], cre_by_val: cookies[:cre_by_val], asg_by: cookies[:asg_by], asg_by_val: cookies[:asg_by_val], loc: cookies[:loc], loc_val: cookies[:loc_val], priority: cookies[:priority], priority_val: cookies[:priority_val], daterange: cookies[:daterange],last_touch: cookies[:last_touch],last_tch: cookies[:last_tch], dt_range: cookies[:dt_range], dtrange_from: cookies[:dtrange_from], dt_range_from: cookies[:dt_range_from], dtrange_to: cookies[:dtrange_to], dt_range_to: cookies[:dt_range_to],q: cookies[:deal_quarter], y: cookies[:deal_year], tag: cookies[:tag]})}
     %thead
       %tr
         %th.dropdown#deal_label_menu
@@ -67,7 +67,7 @@
        
                   var dele = "<li><a rel='nofollow' id='delete_unassigned_link' href='javascript:' onclick=\"delete_unassigned_deal('" + row[0] + "')\"><span class='glyphicon glyphicon-trash' style='margin-right:5px;'></span>Delete</a></li>"
          
-                str+= "<br><ul class='dropdown-menu'><li class='arrow_top'></li><li><a href='/deals/"+ row[0]+"/edit'><span class='glyphicon glyphicon-edit' style='margin-right:5px;'></span>Edit</a></li> <li class='divider'></li><li><a href='javascript:' onclick=\"quick_edit('" + row[0] + "')\"><span class='quick-edit' style='margin-right:5px;' ></span>Quick Edit</a></li>  <li class='divider'></li>"+ dele +"<li class='divider'></li><li><a onclick=\"$('#reassign_deal_ids').val('" + row[0] + "');reset_all_checkbox();\" href='javascript:' data-toggle='modal' data-target='#assignDealModal'><span class='glyphicon glyphicon-user' style='margin-right:5px;'></span>Reassign User</a></li></ul></div>";               
+                str+= "<br><ul class='dropdown-menu'><li class='arrow_top'></li><li><a href='/leads/"+ row[0]+"/edit'><span class='glyphicon glyphicon-edit' style='margin-right:5px;'></span>Edit</a></li> <li class='divider'></li><li><a href='javascript:' onclick=\"quick_edit('" + row[0] + "')\"><span class='quick-edit' style='margin-right:5px;' ></span>Quick Edit</a></li>  <li class='divider'></li>"+ dele +"<li class='divider'></li><li><a onclick=\"$('#reassign_deal_ids').val('" + row[0] + "');reset_all_checkbox();\" href='javascript:' data-toggle='modal' data-target='#assignDealModal'><span class='glyphicon glyphicon-user' style='margin-right:5px;'></span>Reassign User</a></li></ul></div>";
                 return str
               }
        },
@@ -190,10 +190,10 @@
        $("#badge_un_assigned").html("(0)");
   }
   function delete_unassigned_deal(id){
-      if(confirm("Do you want to delete the deal?")){
+      if(confirm("Do you want to delete the lead?")){
       $.ajax({
         type: "DELETE",
-        url: "/deals/"+id,
+        url: "/leads/"+id,
         dataType: 'json',
         async: true,
         data: {type: "unassigned"},

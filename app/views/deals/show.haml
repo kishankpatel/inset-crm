@@ -269,7 +269,7 @@
             -if (@deal.deal_status.present? && @deal.deal_status.original_id != 4)
               - if @deal.created_by == @current_user.id || @current_user.is_admin? || @current_user.is_super_admin?
                 - deal_delete_url = @deal.is_remote? ? lead_path(@deal,:type=>'unassigned') : lead_path(@deal)
-                =link_to deal_delete_url, :method => :delete, :confirm => "Do you want to delete the deal?" ,class: "grey_act", style: "text-decoration:none" do
+                =link_to deal_delete_url, :method => :delete, :confirm => "Do you want to delete the lead?" ,class: "grey_act", style: "text-decoration:none" do
                   %span.glyphicon.glyphicon-trash{title: "Delete", rel: "tooltip"}
             /%a.grey_act.movedealincomepop{"data-toggle" => "modal", "data-target" => "#dealmoveModal", style: "text-decoration:none;cursor:pointer",rel: "popup", title: "Move Deal",onclick: "$('#move_deal').get(0).reset();$('.show_all').show();$('.deal_s_'+#{@deal.deal_status_id}).hide();$('#assigned_to_user').val(#{@deal.assigned_to});$('#new_initr_id').val(#{@deal.initiated_by});$('#new_assign_id').val(#{@deal.assigned_to});move_deal_status_wise(#{@deal.id},#{@deal.deal_status.original_id},#{@deal.is_current})", "data-id" => @deal.id}
             / %span.glyphicon.glyphicon-fullscreen{title: "Move Deal", rel: "tooltip"}

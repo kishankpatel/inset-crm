@@ -1,7 +1,7 @@
 #deallist.col-md-12.deallist
   .w-box.tab-pane.active.in.wbox-customize
     %div.table-responsive
-      %table#dataTableInactiveDeal.table.table-condensed.table-hover.table-striped{:style=>"border:1px solid #D1D1D1", :cellspacing=>"40","data-source"=>deals_url(format: 'json',params: {cuser: current_user.id,_type: 'inactive_deals',filtertype: params[:filtertype],filtervalue: params[:filtervalue], assigned_to: params[:assigned_to], created_by: params[:created_by], cre_by: params[:cre_by], cre_by_val: params[:cre_by_val], asg_by: params[:asg_by], asg_by_val: params[:asg_by_val], loc: params[:loc], loc_val: params[:loc_val], priority: params[:priority], priority_val: params[:priority_val], daterange: params[:daterange], dt_range: params[:dt_range]})}
+      %table#dataTableInactiveDeal.table.table-condensed.table-hover.table-striped{:style=>"border:1px solid #D1D1D1", :cellspacing=>"40","data-source"=>leads_url(format: 'json',params: {cuser: current_user.id,_type: 'inactive_deals',filtertype: params[:filtertype],filtervalue: params[:filtervalue], assigned_to: params[:assigned_to], created_by: params[:created_by], cre_by: params[:cre_by], cre_by_val: params[:cre_by_val], asg_by: params[:asg_by], asg_by_val: params[:asg_by_val], loc: params[:loc], loc_val: params[:loc_val], priority: params[:priority], priority_val: params[:priority_val], daterange: params[:daterange], dt_range: params[:dt_range]})}
         %thead
           %tr
             %th.dropdown#deal_label_menu{style: "font-size:18px;color:#F59106;"}
@@ -98,11 +98,11 @@
                       <a onclick=\"$('#send-mail-popup').get(0).reset();$('#to').val('"+ row[8] +"');$('#mailer_id').val(" + row[0] + ");$('#mailer_type').val('Deal');$('#email_contact_id').val(" + row[14] + ");$('#email_contact_type').val('"+ row[18] +"');reset_email_err_msg();\" href='javascript:' data-toggle='modal' data-target='#SendEmailModal'>Send Email</a> \
                     </li>\
                     <li> \
-                      <a href='/deals/" + row[0] + "/edit'>Edit</a> \
+                      <a href='/leads/" + row[0] + "/edit'>Edit</a> \
                     </li>"
                     if(row[21] == "true"){
                     str+="<li> \
-                      <a rel='nofollow' data-method='delete' data-confirm='Do you want to delete the deal?' href='/deals/" + row[0] + "'>Delete</a> \
+                      <a rel='nofollow' data-method='delete' data-confirm='Do you want to delete the lead?' href='/leads/" + row[0] + "'>Delete</a> \
                     </li>";
                     }
                     str+="<li> \

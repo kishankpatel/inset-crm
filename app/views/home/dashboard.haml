@@ -112,7 +112,7 @@
     });
     function redirect_deal()
     {
-      window.location.href ="/deals/#{cookies[:redirect_deal_id]}";
+      window.location.href ="/leads/#{cookies[:redirect_deal_id]}";
     }
     $(function() {
      $( document ).ajaxComplete(function() {
@@ -144,7 +144,7 @@
         var call_id = "#{@current_organization.task_types.where(:name => "Call").first.id if @current_organization.task_types.present?}";
         if("#{@current_user.is_admin? || @current_user.is_super_admin?}" == "true"){
           if(data.responseJSON.owndeal != 0)
-            $("#usage_won_deal").html("<a href='/deals?type=won' style='color:#4F8E50'>"+data.responseJSON.owndeal+"</a>");
+            $("#usage_won_deal").html("<a href='/leads?type=won' style='color:#4F8E50'>"+data.responseJSON.owndeal+"</a>");
           else
             $("#usage_won_deal").html(data.responseJSON.owndeal);
           if(data.responseJSON.call_cmpl != 0)
@@ -166,7 +166,7 @@
           $("#usage_nurtured_deal").html(data.responseJSON.leadsnortured);
         }
         if(data.responseJSON.lostdeal != 0)
-          $("#usage_lost_deal").html("<a href='/deals?type=lost' style='color:#FAAB3D'>"+data.responseJSON.lostdeal+"</a>");
+          $("#usage_lost_deal").html("<a href='/leads?type=lost' style='color:#FAAB3D'>"+data.responseJSON.lostdeal+"</a>");
         else
           $("#usage_lost_deal").html(data.responseJSON.lostdeal);
         }

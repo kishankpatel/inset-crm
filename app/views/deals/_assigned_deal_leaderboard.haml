@@ -27,7 +27,7 @@
               %td 
                 = i 
               %td 
-                = link_to deal_url(deal), :target => "_blank" do
+                = link_to lead_url(deal), :target => "_blank" do
                   = deal.title
               %td 
                 = deal.assigned_user.present? ? ((deal.assigned_user.id == @current_user.id) ? "me" : deal.assigned_user.full_name) : ''

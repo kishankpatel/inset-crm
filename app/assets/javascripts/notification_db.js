@@ -221,7 +221,7 @@ function notify(title, desc, dealid) {
 			}
 			else
 			{
-				linkurl =  url +'/deals/'+dealid
+				linkurl =  url +'/leads/'+dealid
 			}
 			var notification = window.webkitNotifications.createNotification(
 				 url + '/assets/task-icon-larger.png',

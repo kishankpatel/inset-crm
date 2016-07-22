@@ -49,7 +49,7 @@
                       %li
                         %a{href: edit_lead_path(deal)} Edit
                       %li
-                        =link_to("Delete", lead_path(deal), :method => :delete, :confirm => "Do you want to delete the deal?")
+                        =link_to("Delete", lead_path(deal), :method => :delete, :confirm => "Do you want to delete the lead?")
                       %li
                         %a.movedealpipelinepop{"data-toggle" => "modal", href: "#dealmoveModal", rel: "popup", title: "Move Deal",onclick: "move_deal(#{deal.id})", "data-id" => deal.id}
                           Move Deal          

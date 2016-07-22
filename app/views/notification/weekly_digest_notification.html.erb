@@ -41,13 +41,13 @@
 						<%- @deals.each do |deal| %>
 						<tr style="border-bottom: 1px solid #CCC">
 						 <td> <%=i%></td>
-					  <td> <%=link_to deal.title, "https://wakeupsales.com/deals/#{deal.id}"%></td>
+					  <td> <%=link_to deal.title, "https://wakeupsales.com/leads/#{deal.id}"%></td>
 						<td>
-						<%=link_to (deal.contact_name.present? ? deal.contact_name : "NA"), "https://wakeupsales.com/deals/#{deal.id}"%> <%=deal.contact_email.present? ? "/"+ deal.contact_email : ""%>
+						<%=link_to (deal.contact_name.present? ? deal.contact_name : "NA"), "https://wakeupsales.com/leads/#{deal.id}"%> <%=deal.contact_email.present? ? "/"+ deal.contact_email : ""%>
 						</td>
 				<!--		<td><%#=link_to (deal.amount.present? ? deal.amount : "NA"), "https://wakeupsales.com/deals/#{deal.id}"%></td>
 						<td><%#=link_to (deal.last_activity_date.present? ? distance_of_time_in_words_to_now(deal.last_activity_date)   + " ago": "N/A"), "https://wakeupsales.com/deals/#{deal.id}"%></td> -->
-            <td><%=link_to (deal.latest_task_type_id.present? ? deal.last_task.name  : "No-Action"), "https://wakeupsales.com/deals/#{deal.id}"%></td>
+            <td><%=link_to (deal.latest_task_type_id.present? ? deal.last_task.name  : "No-Action"), "https://wakeupsales.com/leads/#{deal.id}"%></td>
 				 	</tr>
 				 	<%i += 1%>
 						<% end %>
@@ -56,7 +56,7 @@
 				</p>
 				
 				 <p>
-				 <a href="https://www.wakeupsales.com/deals?assigned_to=<%=@assigned_to%>" target="_blank" style="cursor:pointer;text-decoration: none;color:#FFFFFF;">
+				 <a href="https://www.wakeupsales.com/leads?assigned_to=<%=@assigned_to%>" target="_blank" style="cursor:pointer;text-decoration: none;color:#FFFFFF;">
 				   <div style="border:none;border-radius:10px;-moz-border-radius:10px;-webkit-border-radius:10px;background:#0EA426;font-weight:bold;margin-top:20px;padding:8px 0;width:100%;text-align:center;">
 			         View all your deals
 			       </div>

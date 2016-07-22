@@ -47,7 +47,7 @@ class ApplicationController < ActionController::Base
     if Rails.configuration.cache_store.include?(:redis_store)
     #views/localhost:3000/terms
     #views/localhost:3000/deals/10301
-    unless (fragment.include?("/terms") || fragment.include?("/privacy") || fragment.include?("/security") || fragment.include?("/deals/") )
+    unless (fragment.include?("/terms") || fragment.include?("/privacy") || fragment.include?("/security") || fragment.include?("/leads/") )
      # if fragment.is_a?(Regexp)
         puts "----------------------inside if"
         fragment = "#{fragment.to_s.split(':').last.gsub(')', '')}*"
@@ -305,7 +305,7 @@ class ApplicationController < ActionController::Base
    if !session[:from_mail].nil? || !session[:from_mail].blank?  
      users = User.select(:id).where("organization_id=?", @current_organization.id).collect(&:id).to_a  
      if users.include? session[:from_mail].to_i 
-       "/deals?assigned_to=#{session[:from_mail].to_i}"
+       "/leads?assigned_to=#{session[:from_mail].to_i}"
      else 
        "/"
      end

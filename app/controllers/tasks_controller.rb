@@ -390,7 +390,7 @@ class TasksController < ApplicationController
 			else
 			 imgurl = "/assets/no_user.png"
 			end
-			events << {:id => task.id, :img=>imgurl, :is_complete=> task.is_completed, :tasktype=> task.task_type.name , :assign_to=> "#{(task.user.present? ? task.user.full_name : 'NA')}", :url=> "http://#{request.host_with_port}/deals/#{deal.id}", :title => "\n"+task.title+ "\n" + "Deal:" +" "+deal.title+ "\n" ,   :color=> TaskType::TASK_COLORS[task.task_type.name], :className=>"test", :description => "At - #{task.due_date.strftime('%H:%M')}\nTask - "+task.title+"\n Deal - " + deal.title+"\nAssigned To - "+(task.user ? task.user.full_name : ""), :start => "#{task.due_date.iso8601}", :end => "#{task.due_date.iso8601}", :allDay => false}
+			events << {:id => task.id, :img=>imgurl, :is_complete=> task.is_completed, :tasktype=> task.task_type.name , :assign_to=> "#{(task.user.present? ? task.user.full_name : 'NA')}", :url=> "http://#{request.host_with_port}/leads/#{deal.id}", :title => "\n"+task.title+ "\n" + "Deal:" +" "+deal.title+ "\n" ,   :color=> TaskType::TASK_COLORS[task.task_type.name], :className=>"test", :description => "At - #{task.due_date.strftime('%H:%M')}\nTask - "+task.title+"\n Deal - " + deal.title+"\nAssigned To - "+(task.user ? task.user.full_name : ""), :start => "#{task.due_date.iso8601}", :end => "#{task.due_date.iso8601}", :allDay => false}
 	    end
       end
     end

@@ -6,14 +6,14 @@
   %li.divider
   %li
     - unless @current_user.is_admin? || @current_user.is_super_admin?
-      %a{href: "/deals?assigned_to=me"}
+      %a{href: "/leads?assigned_to=me"}
         .clearfix
           %span.pull-left
             %span.deal-mid
             = new_deals_count
             New Deals assigned
     - else
-      %a{href: "/deals"}
+      %a{href: "/leads"}
         .clearfix
           %span.pull-left
             %span.deal-mid

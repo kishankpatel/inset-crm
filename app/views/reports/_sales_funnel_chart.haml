@@ -14,28 +14,28 @@
         .row.rpadding{style: "font-size: 12px;"}
           %b New Deals:
           - if @new_deals > 0
-            = link_to deals_url(:type=>"incoming", :q=>@quarter ,:y=>@year ) do
+            = link_to leads_url(:type=>"incoming", :q=>@quarter ,:y=>@year ) do
               = @new_deals
           - else
             = @new_deals
         .row.rpadding{style: "font-size: 12px;"}
           %b  Qualified Deals:
           - if @qualified_deals > 0
-            = link_to deals_url(:type=>"qualify", :q=>@quarter ,:y=>@year ) do
+            = link_to leads_url(:type=>"qualify", :q=>@quarter ,:y=>@year ) do
               = @qualified_deals
           - else
             = @qualified_deals
         .row.rpadding{style: "font-size: 12px;"}
           %b  Lost Deals:
           - if @lost_deals > 0
-            = link_to deals_url(:type=>"lost", :q=>@quarter ,:y=>@year ) do
+            = link_to leads_url(:type=>"lost", :q=>@quarter ,:y=>@year ) do
               = @lost_deals
           - else
             = @lost_deals
         .row.rpadding{style: "font-size: 12px;"}
           %b  Won Deals:
           - if @won_deals > 0
-            = link_to deals_url(:type=>"won", :q=>@quarter ,:y=>@year ) do
+            = link_to leads_url(:type=>"won", :q=>@quarter ,:y=>@year ) do
               =@won_deals
           - else
             = @won_deals

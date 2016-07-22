@@ -1,5 +1,5 @@
 .table-responsive
-  %table#dataTableIncoming.table.white-table.table-hover{"data-source"=>deals_url(format: 'json',params: {cuser: current_user.id,_type: 'incoming',filtertype: params[:filtertype],filtervalue: params[:filtervalue], assigned_to: params[:assigned_to], created_by: params[:created_by], cre_by: cookies[:cre_by], cre_by_val: cookies[:cre_by_val], asg_by: cookies[:asg_by], asg_by_val: cookies[:asg_by_val], loc: cookies[:loc], loc_val: cookies[:loc_val], priority: cookies[:priority], priority_val: cookies[:priority_val], next: cookies[:next], next_val: cookies[:next_val], daterange: cookies[:daterange],last_touch: cookies[:last_touch],last_tch: cookies[:last_tch], dt_range: cookies[:dt_range], dtrange_from: cookies[:dtrange_from], dt_range_from: cookies[:dt_range_from], dtrange_to: cookies[:dtrange_to], dt_range_to: cookies[:dt_range_to],q: params[:q],y: params[:y], is_opportunity: cookies[:opportunity], tag: cookies[:tag], label_type: cookies[:label_type]})}
+  %table#dataTableIncoming.table.white-table.table-hover{"data-source"=>leads_url(format: 'json',params: {cuser: current_user.id,_type: 'incoming',filtertype: params[:filtertype],filtervalue: params[:filtervalue], assigned_to: params[:assigned_to], created_by: params[:created_by], cre_by: cookies[:cre_by], cre_by_val: cookies[:cre_by_val], asg_by: cookies[:asg_by], asg_by_val: cookies[:asg_by_val], loc: cookies[:loc], loc_val: cookies[:loc_val], priority: cookies[:priority], priority_val: cookies[:priority_val], next: cookies[:next], next_val: cookies[:next_val], daterange: cookies[:daterange],last_touch: cookies[:last_touch],last_tch: cookies[:last_tch], dt_range: cookies[:dt_range], dtrange_from: cookies[:dtrange_from], dt_range_from: cookies[:dt_range_from], dtrange_to: cookies[:dtrange_to], dt_range_to: cookies[:dt_range_to],q: params[:q],y: params[:y], is_opportunity: cookies[:opportunity], tag: cookies[:tag], label_type: cookies[:label_type]})}
     %thead
       %tr
         %th.dropdown#deal_label_menu
@@ -95,13 +95,13 @@
                  str+="<div class='dropdown fl'> <div class='deal_set fl dropdown-toggle' rel='tooltip' title='Actions' data-toggle='dropdown' onclick=\"scrollbtm(this);$('#clicked_button_ref').val('listmenu');\" style='cursor:pointer'></div>";
                 }
                 if(row[21]=="true"){
-                  var dele = "<li><a rel='nofollow' data-method='delete' data-confirm='Do you want to delete the deal?' href='/deals/" + row[0] + "'><span class='glyphicon glyphicon-trash' style='margin-right:5px;'></span>Delete</a></li>"
+                  var dele = "<li><a rel='nofollow' data-method='delete' data-confirm='Do you want to delete the lead?' href='/leads/" + row[0] + "'><span class='glyphicon glyphicon-trash' style='margin-right:5px;'></span>Delete</a></li>"
                 }
                 else
                 {
                  var dele = ""
                 }
-                str+= "<br><ul class='dropdown-menu'><li class='arrow_top'></li><li><a rel='tooltip' onclick=\"$('#task_form')[0].reset();$('#deal_title_task').val('" + row[1] + "');task_deal(' + row[0] + ');$('#hfield').val('"+ row[0] +"');$('#deal_title_task').val('"+ row[1] +"').prop('disabled', true);$('#email_err').html('');\" href='#taskModal' data-toggle='modal' data-id='" + row[0] + "'><span class='add_i_deal'></span>Add Task</a></li><li class='divider'></li><li><a onclick=\"$('#notable_id').val('" + row[0] + "');$('#notable_type').val('Deal');\" href='javascript:' data-toggle='modal' data-target='#noteModal'><span class='add_i_note'></span>Add Note</a></li><li class='divider'></li><li><a onclick=\"$('#deal_id_for_label').val('" + row[0] + "');reset_all_checkbox();\" href='javascript:' data-toggle='modal' data-target='#ApplyLabelModal'><span class='glyphicon glyphicon-tag' style='margin-right:5px;'></span>Apply Label</a></li><li class='divider'></li><li><a onclick=\"$('#send-mail-popup').get(0).reset();$('#to').val('"+ row[8] +"');$('#mailer_id').val('" + row[0] + "');$('#mailer_type').val('Deal');$('#email_contact_id').val(" + row[14] + ");$('#email_contact_type').val('"+ row[18] +"');reset_email_err_msg();\" href='javascript:' data-toggle='modal' data-target='#SendEmailModal'><span class='glyphicon glyphicon-envelope' style='margin-right:5px;'></span>Send Email</a></li><li class='divider'></li><li><a href='/deals/"+ row[0]+"/edit'><span class='glyphicon glyphicon-edit' style='margin-right:5px;'></span>Edit</a></li> <li class='divider'></li><li><a href='javascript:' onclick=\"quick_edit('" + row[0] + "')\"><span class='quick-edit' style='margin-right:5px;' ></span>Quick Edit</a></li>  <li class='divider'></li>"+ dele +"<li class='divider'></li><li><a title='Move Deal' rel='popup'  onclick=\"$('.show_all').show();$('.deal_s_"+ row[22] +"').hide();$('#assigned_to_user').val('" + row[19] + "');$('#new_initr_id').val('" + row[20] + "');$('#new_assign_id').val('" + row[19] + "');move_deal('" + row[0] + "');reset_pop();\" href='#dealmoveModal' data-toggle='modal' data-id='" + row[0] + "' class='movedealincomepop'><span class='add_i_move'></span>Move Deal</a></li></ul></div>";               
+                str+= "<br><ul class='dropdown-menu'><li class='arrow_top'></li><li><a rel='tooltip' onclick=\"$('#task_form')[0].reset();$('#deal_title_task').val('" + row[1] + "');task_deal(' + row[0] + ');$('#hfield').val('"+ row[0] +"');$('#deal_title_task').val('"+ row[1] +"').prop('disabled', true);$('#email_err').html('');\" href='#taskModal' data-toggle='modal' data-id='" + row[0] + "'><span class='add_i_deal'></span>Add Task</a></li><li class='divider'></li><li><a onclick=\"$('#notable_id').val('" + row[0] + "');$('#notable_type').val('Deal');\" href='javascript:' data-toggle='modal' data-target='#noteModal'><span class='add_i_note'></span>Add Note</a></li><li class='divider'></li><li><a onclick=\"$('#deal_id_for_label').val('" + row[0] + "');reset_all_checkbox();\" href='javascript:' data-toggle='modal' data-target='#ApplyLabelModal'><span class='glyphicon glyphicon-tag' style='margin-right:5px;'></span>Apply Label</a></li><li class='divider'></li><li><a onclick=\"$('#send-mail-popup').get(0).reset();$('#to').val('"+ row[8] +"');$('#mailer_id').val('" + row[0] + "');$('#mailer_type').val('Deal');$('#email_contact_id').val(" + row[14] + ");$('#email_contact_type').val('"+ row[18] +"');reset_email_err_msg();\" href='javascript:' data-toggle='modal' data-target='#SendEmailModal'><span class='glyphicon glyphicon-envelope' style='margin-right:5px;'></span>Send Email</a></li><li class='divider'></li><li><a href='/leads/"+ row[0]+"/edit'><span class='glyphicon glyphicon-edit' style='margin-right:5px;'></span>Edit</a></li> <li class='divider'></li><li><a href='javascript:' onclick=\"quick_edit('" + row[0] + "')\"><span class='quick-edit' style='margin-right:5px;' ></span>Quick Edit</a></li>  <li class='divider'></li>"+ dele +"<li class='divider'></li><li><a title='Move Deal' rel='popup'  onclick=\"$('.show_all').show();$('.deal_s_"+ row[22] +"').hide();$('#assigned_to_user').val('" + row[19] + "');$('#new_initr_id').val('" + row[20] + "');$('#new_assign_id').val('" + row[19] + "');move_deal('" + row[0] + "');reset_pop();\" href='#dealmoveModal' data-toggle='modal' data-id='" + row[0] + "' class='movedealincomepop'><span class='add_i_move'></span>Move Deal</a></li></ul></div>";
                 return str
               }
        },
@@ -120,7 +120,7 @@
               " + row[2] +"\
               <i class='icon-user' title='Assigned to'></i> \
                &nbsp;&nbsp;&bull; Assigned to \
-               <a href='/deals?assigned_to=" + row[19] + "' rel='tooltip' title='Click to filter' onclick=\"reset_deal_cookie();\"> \
+               <a href='/leads?assigned_to=" + row[19] + "' rel='tooltip' title='Click to filter' onclick=\"reset_deal_cookie();\"> \
               " + row[3] + " \
               </a> \
               <div> \
@@ -150,11 +150,11 @@
                     <a onclick=\"$('#send-mail-popup').get(0).reset();$('#to').val('"+ row[8] +"');$('#mailer_id').val(" + row[0] + ");$('#mailer_type').val('Deal');$('#email_contact_id').val(" + row[14] + ");$('#email_contact_type').val('"+ row[18] +"');reset_email_err_msg();\" href='javascript:' data-toggle='modal' data-target='#SendEmailModal'>Send Email</a> \
                   </li>\
                   <li> \
-                    <a href='/deals/" + row[0] + "/edit'>Edit</a> \
+                    <a href='/leads/" + row[0] + "/edit'>Edit</a> \
                   </li>"
                   if(row[21] == "true"){
                   str+="<li> \
-                    <a rel='nofollow' data-method='delete' data-confirm='Do you want to delete the deal?' href='/deals/" + row[0] + "'>Delete</a> \
+                    <a rel='nofollow' data-method='delete' data-confirm='Do you want to delete the lead?' href='/leads/" + row[0] + "'>Delete</a> \
                   </li>";
                   }
                   str+="<li> \
@@ -260,7 +260,7 @@
          {aTargets: [4],
           bSortable: true,
           mRender: function(data, type, row ){
-            str="<br/><div class='grey_small'>&bull; by <a href='/deals?created_by=" + row[20] + "' rel='tooltip' title='Click to filter' onclick=\"reset_deal_cookie();\"> \
+            str="<br/><div class='grey_small'>&bull; by <a href='/leads?created_by=" + row[20] + "' rel='tooltip' title='Click to filter' onclick=\"reset_deal_cookie();\"> \
               " + row[24] + " \
               </span></div>"
             return row[15]+str;             
@@ -310,8 +310,8 @@
   });    
   $('#dataTableIncoming').on( 'xhr', function ( e, o, json ) { 
     if("#{cookies[:dt_range]}" == "3m"){
-      history.replaceState({}, '', '/deals');  
-      $('#filter_msgdeals').show().html('Filtered ' + json.iTotalDisplayRecords + ' leads to nurture. <a href="/deals?type=incoming" class="btn btn-xs btn-warning" style="margin-bottom: 3px;" onclick="reset_all_deal_filter();reset_filter_val();">RESET</a>')        
+      history.replaceState({}, '', '/leads');
+      $('#filter_msgdeals').show().html('Filtered ' + json.iTotalDisplayRecords + ' leads to nurture. <a href="/leads?type=incoming" class="btn btn-xs btn-warning" style="margin-bottom: 3px;" onclick="reset_all_deal_filter();reset_filter_val();">RESET</a>')
       $.removeCookie("dt_range");      
     }else{
       $('#filter_msgdeals').hide()

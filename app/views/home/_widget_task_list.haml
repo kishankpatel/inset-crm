@@ -55,7 +55,7 @@
               %span.ic_assign{rel: "tooltip", title: "Assigned To"}
               %span{style: "font-size:12px;"}
                 - if task.user.present?
-                  = link_to "#{task.user.first_name}", "/deals?assigned_to=#{task.user.id}"
+                  = link_to "#{task.user.first_name}", "/leads?assigned_to=#{task.user.id}"
     =render :partial => "tasks/task_edit_popup"
     =render :partial => "tasks/task_followup_popup"
   .cb10

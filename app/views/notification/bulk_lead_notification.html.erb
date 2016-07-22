@@ -26,7 +26,7 @@
 				  <%- @deals.each do |dl| %>
 					<%=i%>.
 					
-						<%=link_to dl.title, "https://wakeupsales.com/deals/#{dl.id}"%>
+						<%=link_to dl.title, "https://wakeupsales.com/leads/#{dl.id}"%>
 					
 					<%- if dl.initiator.present? %>
 					 created by <%=dl.initiator.full_name%> 

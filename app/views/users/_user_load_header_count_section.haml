@@ -10,7 +10,7 @@
     %span 
       =@task_text
   - if @allowed_user
-    - url_ndeal = "/deals"
+    - url_ndeal = "/leads"
   - else
     - url_ndeal = "javascript:"
   %a.btn.btn-default.btn-lg{role: "button",href: url_ndeal}
@@ -20,7 +20,7 @@
       -if !DealStatus.get_deal_name('1',@current_user.organization_id).nil? && !DealStatus.get_deal_name('1',@current_user.organization_id).blank?	
         = DealStatus.get_deal_name('1',@current_user.organization_id).name
   - if @allowed_user
-    - url_qdeal = "/deals?type=qualify"
+    - url_qdeal = "/leads?type=qualify"
   - else
     - url_qdeal = "javascript:"
   %a.btn.btn-default.btn-lg{role: "button", style: "margin-right:0px;",href: url_qdeal}
