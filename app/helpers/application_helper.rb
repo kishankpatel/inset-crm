@@ -206,9 +206,9 @@ end
     query_condition=[]
     if user.present?
        if associated_by == "created by"
-        query_condition.where("is_active = ? and initiated_by= ? and deals.organization_id = ?",true,user.id,user.organization_id)
+        query_condition.where("deal_statuses.is_active = ? and initiated_by= ? and deals.organization_id = ?",true,user.id,user.organization_id)
        elsif associated_by == "assigned to"
-        query_condition.where("is_active = ? and assigned_to = ? and deals.organization_id = ? ",true,user.id, user.organization_id)
+        query_condition.where("deal_statuses.is_active = ? and assigned_to = ? and deals.organization_id = ? ",true,user.id, user.organization_id)
        end
     end
     query_condition

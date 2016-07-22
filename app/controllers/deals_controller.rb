@@ -46,10 +46,10 @@ class DealsController < ApplicationController
         name = (user.id == current_user.id) ? "me" : user.full_name
         new_deal_condition = get_deal_status_count([1,2,3,4,5,6], user, associated_by)
         new_deal_count_condition =  get_deal_status_count([1])
-        count_total = Deal.includes(:deal_status).select("deals.id, deal_statuses.original_id").where(new_deal_count_condition).where("is_remote=0 and deal_statuses.original_id IN (?) and is_active=? ", [1], true).count
+        count_total = Deal.includes(:deal_status).select("deals.id, deal_statuses.original_id").where(new_deal_count_condition).where("is_remote=0 and deal_statuses.original_id IN (?) and deal_statuses.is_active=? ", [1], true).count
         @new_deals =  Deal.includes(:deal_status).select("deals.id, deal_statuses.original_id").where(new_deal_condition).where("is_remote=0 and deal_statuses.original_id IN (?) ", [1]).count
         user_condition = get_deal_index_status_count([1,2,3,4,5,6], user, associated_by)
-        @total_new_deals = Deal.includes(:deal_status).select("deals.id, deal_statuses.original_id").where(user_condition).where("is_remote=0 and deal_statuses.original_id IN (?) and is_active =?", [1],true).count
+        @total_new_deals = Deal.includes(:deal_status).select("deals.id, deal_statuses.original_id").where(user_condition).where("is_remote=0 and deal_statuses.original_id IN (?) and deal_statuses.is_active =?", [1],true).count
 #      @new_deals = get_deal_status_count([1], user, associated_by).count
       unless (params[:q].present? && params[:y].present?)
          @filter_msg=""

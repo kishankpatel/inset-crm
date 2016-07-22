@@ -25,6 +25,8 @@ SalesCafe::Application.routes.draw do
   match 'settings/update_priority_org' => 'settings#update_priority_org', :via => [:get, :post]
   match 'settings/update_lead_status' => 'settings#update_deal_status', :via => [:get, :post]
   match 'settings/update_feed_keyword_org' => 'settings#update_feed_keyword_org', :via => [:get, :post]
+  match 'settings/add_lead_stage' => 'settings#add_lead_stage', :via => :post
+  match 'settings/update_lead_stages' => 'settings#update_lead_stages', :via => :post
   match 'settings/update_widget_org' => 'settings#update_widget_org', :via => [:get, :post]
   match 'settings/update_notification' => 'settings#update_notification', :via => [:get, :post]
   match 'settings/fetch_pages' => 'settings#fetch_pages', :via => [:get, :post]
