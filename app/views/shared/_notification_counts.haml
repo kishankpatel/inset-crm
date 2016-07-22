@@ -22,13 +22,13 @@
 - if qualified_deals_count > 0
   %li.divider
   %li
-    %a{href: "/deals?type=qualify"}
+    %a{href: "/leads?type=qualify"}
       .clearfix
         %span.pull-left
           %span.deal-mid
           =qualified_deals_count
           Qualified Deals           
-- if badge_overdue > 0
+- if badge_overdue.to_i > 0
   %li.divider
   %li
     %a{href: "/tasks?type=overdue"}
@@ -37,7 +37,7 @@
           %span.task-mid
           =badge_overdue
           Overdue Tasks
-- if badge_today > 0
+- if badge_today.to_i > 0
   %li.divider
   %li
     %a{href: "/tasks?type=today"}
