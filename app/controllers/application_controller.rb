@@ -74,49 +74,65 @@ class ApplicationController < ActionController::Base
     Time.zone = current_user.time_zone if current_user && current_user.time_zone.present?
   end 
 
-  #def get_contacts
-  #  if(!params[:org_id].nil?)    
+  def get_contacts
+   # if(!params[:org_id].nil?)    
 
    #  query = params[:q]+"*"
-    # p_page = params[:page].nil? ? 1 : params[:page].to_i
-     # search = Tire.search [ 'individual_contacts', 'company_contacts'], :page=> p_page, :per_page=> 20 do
-      #  query { string query} 
-       # filter :term, :is_active => true
-        #from  ((p_page-1)*20)
-        #size 100
-     #end
+   #  p_page = params[:page].nil? ? 1 : params[:page].to_i
+   #   search = Tire.search [ 'individual_contacts', 'company_contacts'], :page=> p_page, :per_page=> 20 do
+   #     query { string query} 
+   #     filter :term, :is_active => true
+   #      from  ((p_page-1)*20)
+   #      size 100
+   #   end
 
-    # results = search.results
-     #result_details=[]
-      #results.map do |result|
-#        if result.class.name == "Contact"
-#        end
+   #  results = search.results
+   #   result_details=[]
+   #    results.map do |result|
+   #     if result.class.name == "Contact"
+   #     end
      
-        ## disabled public deals view by normal user
-        #if ((result.organization_id == current_user.organization.id) && (result.contact_status == true) && ((result.is_public == true) || ((result.created_by == current_user.id) || (current_user.is_admin?))))
-       # if ((result.organization_id == current_user.organization.id) && (result.contact_status == true) && (((result.created_by == current_user.id) || (current_user.is_admin?))))
+   #      # disabled public deals view by normal user
+   #      if ((result.organization_id == current_user.organization.id) && (result.contact_status == true) && ((result.is_public == true) || ((result.created_by == current_user.id) || (current_user.is_admin?))))
+   #     if ((result.organization_id == current_user.organization.id) && (result.contact_status == true) && (((result.created_by == current_user.id) || (current_user.is_admin?))))
 
-        #  result_details << {
-         #         id: result.id,
-          #        name: result.title,
-           #       email: result.email,
-            #      country_id: result.country_id,
-             #     phone_no: result.phone_number,
-              #    company_type: result.class.name,
-               #   is_active: result.contact_status,
-                #  is_public: result.is_public,
-                #  created_by: result.created_by,
-                 # comp_name: (result.class.name == "IndividualContact" ? (comp = CompanyContact.where(id: result.company_contact_id).first).present? ? comp.title : "" : ""),
-                 # time_zone:  (result.class.name == "IndividualContact" ? (comp = CompanyContact.where(id: result.company_contact_id).first).present? ? comp.time_zone : "Hawaii" : "Hawaii")
-                 # }
-        #end
-      #end
-
-      #respond_to do |format|
-       # format.json { render json: result_details }
-      #end
-    #end
-  #end 
+   #       result_details << {
+   #               id: result.id,
+   #               name: result.title,
+   #               email: result.email,
+   #               country_id: result.country_id,
+   #               phone_no: result.phone_number,
+   #               company_type: result.class.name,
+   #               is_active: result.contact_status,
+   #               is_public: result.is_public,
+   #               created_by: result.created_by,
+   #               comp_name: (result.class.name == "IndividualContact" ? (comp = CompanyContact.where(id: result.company_contact_id).first).present? ? comp.title : "" : ""),
+   #               time_zone:  (result.class.name == "IndividualContact" ? (comp = CompanyContact.where(id: result.company_contact_id).first).present? ? comp.time_zone : "Hawaii" : "Hawaii")
+   #               }
+   #      end
+   #    end
+   result_details=[]
+   query = params[:q]+"*"
+   results = IndividualContact.search_by(query) + CompanyContact.search_by(query)   
+   results.map do |result|
+     result_details << {
+                   id: result.id,
+                   name: result.title,
+                   email: result.email,
+                   country_id: result.country_id,
+                   phone_no: result.phone_number,
+                   company_type: result.class.name,
+                   is_active: result.contact_status,
+                   is_public: result.is_public,
+                   created_by: result.created_by,
+                   comp_name: (result.class.name == "IndividualContact" ? (comp = CompanyContact.where(id: result.company_contact_id).first).present? ? comp.title : "" : ""),
+                   time_zone:  (result.class.name == "IndividualContact" ? (comp = CompanyContact.where(id: result.company_contact_id).first).present? ? comp.time_zone : "Hawaii" : "Hawaii")
+                   }
+    end
+    respond_to do |format|
+     format.json { render json: result_details }
+    end
+  end 
 
   def get_deals
     if(!params[:org_id].nil?)

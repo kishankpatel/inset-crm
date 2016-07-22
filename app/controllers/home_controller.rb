@@ -836,6 +836,7 @@ group by created_by order by count(*) desc")
       #expire_fragment("user_menu_#{@current_user.id}") if @current_user.present?
      # cache.increment "counter"
      # p cache.read "counter", :raw => true      # => "24"
+     Rails.cache.clear
      expire_fragment("user_menu_#{@current_user.id}") if @current_user.present?
      expire_fragment("admin_true") #if fragment_exist?("admin_true")
      expire_fragment("admin_false") #if fragment_exist?("admin_false")
