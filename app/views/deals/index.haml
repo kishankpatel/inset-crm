@@ -142,15 +142,20 @@
       overflow: scroll;
       overflow-x: hidden;
   }
+  .btn-highlighed {
+    border: 1px solid #4A72B8 !important;
+    background: url("/images/check-mark.png") no-repeat 0 0;
+  }
 .container
   .row
     .cb10
     .cb10
     #sortable
       - current_user.organization.deal_statuses.where({is_active: true}).order('original_id asc').each do |deal_status|
-        .col-md-2.ui-state-default
-          .btn.btn-default{style: 'margin-bottom: 5px'}
+        .col-md-2.ui-state-default.btn.btn-default.filterSelectDropdow{style: 'margin: 3px', 'data-id' => deal_status.id, onclick: "chk_radio_button(#{deal_status.id},'stage', this)", id: "btn_#{deal_status.id}"}
+          .stage_c{style: 'margin: 2px', value: deal_status.id, stage_name: deal_status.name, name: 'stage'}
             = deal_status.name
+  -# {id:"stage_#{status.id}", style: "margin-left:-10px;cursor:pointer;",}
   .row
     .cb10
     .cb10
@@ -727,8 +732,9 @@
         var stage_split = "#{cookies[:stage_val]}".slice(0,-1).split('|');
         for(var i=0;i<stage_split.length;i++)
         {
-          $("#stage_"+ stage_split[i]).prop("checked", true)
-        }      
+          $("#stage_"+ stage_split[i]).prop("checked", true);
+          $("#btn_"+ stage_split[i]).addClass('btn-highlighed');
+        }
         //$('#filter_stage').val("#{cookies[:stage_val]}");
         //$("#stage_"+"#{cookies[:stage_val]}").prop("checked", true)
         $(".tag_filter").show();
@@ -1826,7 +1832,6 @@
   });
 
   function reset_deal_filter(id,class_n){
-
     $('.'+id+"_tag").hide();
     //$('#filter_'+id).prop('selectedIndex',0);
     if(id == "date_range")
@@ -1834,6 +1839,10 @@
       $('.'+class_n).removeAttr('checked');
       $('#deal_from').val('');
       $('#deal_to').val('');
+    }
+    else if(id == "stage"){
+      $('.'+class_n).removeAttr('checked');
+      $('.ui-state-default').removeClass('btn-highlighed');
     }
     else
     {
@@ -1890,6 +1899,7 @@
     $('.lst_tch').removeAttr('checked');
     $('.next_c').removeAttr('checked');
     $('.stage_c').removeAttr('checked');
+    $('.ui-state-default').removeClass('btn-highlighed');
 
     //$('#filter_created_by').prop('selectedIndex',0);
     //$('#filter_assigned_to').prop('selectedIndex',0);
@@ -2073,7 +2083,8 @@
   {
    if($(obj).closest('tr').next().length == 0){$('html, body').animate({scrollTop: $(document).height()}, 800);}
   }
-  function chk_radio_button(id,type)
+
+  function chk_radio_button(id, type, inputNode)
   {
     remove_datatable_cookie();
     if(type == "created")
@@ -2123,9 +2134,25 @@
     }
     else if(type == "stage")
     {
-     $("input:checkbox[name='stage']:checked").each(function() {
-       var values = $(this).val();
-       $("#stage_"+values).attr("checked", true);
-     });
+     if ($("#stage_"+ id).prop("checked") == false) {
+      $("#btn_"+ id).removeClass('btn-highlighed');
+     }
+     if (inputNode) {
+      if($(inputNode).hasClass('btn-highlighed')) {
+        $(inputNode).removeClass('btn-highlighed');
+        $("#stage_"+id).removeAttr("checked");
+      }
+      else {
+        $(inputNode).addClass('btn-highlighed');
+        $("#stage_"+id).prop("checked", true);
+      }
+     }
+     else {
+       $("input:checkbox[name='stage']:checked").each(function() {
+         var values = $(this).val();
+         $("#stage_"+values).attr("checked", true);
+         $("#btn_"+values).addClass('btn-highlighed');
+       });
+     }
     }
   }
