@@ -80,13 +80,13 @@
                       .fl.slide_m Contacts
                       .cb
                       %b{class: "#{params[:controller] == 'contacts' ? 'caret nav_menu_ovd' : ''}"}
-                  - if @current_user.is_super_admin? || @current_user.is_admin?
-                    %li#reports{class: "#{params[:controller] == 'reports' ? 'activ_mnu' : ''}"}
-                      %a{href: "/reports"}
-                        .fl.ic_rpt
-                        .fl.slide_m Reports
-                        .cb
-                        %b{class: "#{params[:controller] == 'reports' ? 'caret nav_menu_ovd' : ''}"}
+                  /- if @current_user.is_super_admin? || @current_user.is_admin?
+                  /  %li#reports{class: "#{params[:controller] == 'reports' ? 'activ_mnu' : ''}"}
+                  /    %a{href: "/reports"}
+                  /      .fl.ic_rpt
+                  /      .fl.slide_m Reports
+                  /      .cb
+                  /      %b{class: "#{params[:controller] == 'reports' ? 'caret nav_menu_ovd' : ''}"}
                   %li#activities{class: "#{params[:action] == 'activities' ? 'activ_mnu' : ''}"}
                     %a{href: "/activities"}
                       .fl.ic_acti
@@ -185,12 +185,17 @@
                       %span.glyphicon.glyphicon-user
                       Profile
 
-                  %li.divider
+                  %li.divider                
                 - if current_user.is_admin?  || current_user.is_super_admin?
                   %li
                     %a{href: "/users"}
                       %span.glyphicon.glyphicon-tower
                       Admin
+                  %li.divider
+                  %li
+                    %a{href: "/reports"}
+                      %span.glyphicon.glyphicon-new-window
+                      Reports
                   %li.divider
                   %li
                     %a{href: "/send_weekly_digest_email"}
