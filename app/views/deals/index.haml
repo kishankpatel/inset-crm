@@ -146,15 +146,35 @@
     border: 1px solid #4A72B8 !important;
     background: url("/images/check-mark.png") no-repeat 0 0;
   }
+  .table > tbody > tr > td {
+    border-top: none;
+  }
 .container
+  .cb10
+  .cb10
   .row
-    .cb10
-    .cb10
-    #sortable
-      - current_user.organization.deal_statuses.where({is_active: true}).order('original_id asc').each do |deal_status|
-        .col-md-2.ui-state-default.btn.btn-default.filterSelectDropdow{style: 'margin: 3px', 'data-id' => deal_status.id, onclick: "chk_radio_button(#{deal_status.id},'stage', this)", id: "btn_#{deal_status.id}"}
-          .stage_c{style: 'margin: 2px', value: deal_status.id, stage_name: deal_status.name, name: 'stage'}
-            = deal_status.name
+    .col-md-12
+      .table-responsive
+        %table.table.table-responsive.white-table
+          %thead#lead-stage-slider
+            %tr
+              %th{role: 'row', style: 'cursor: pointer;'}
+                Lead's Process Flow &nbsp;
+                .label_arrow{style: "display: inline-block"}
+                  %span.glyphicon.glyphicon-chevron-down
+        #lead-stage-content{style: 'display: none;'}
+          %table.table
+            %tbody
+              %tr
+                %td{style: 'border-top: none !important'}
+                  Click and drag to rearrange the sequence.
+              %tr
+                %td
+                  #sortable
+                    - current_user.organization.deal_statuses.where({is_active: true}).order('original_id asc').each do |deal_status|
+                      .col-md-2.ui-state-default.btn.btn-default.filterSelectDropdow{style: 'margin: 3px', 'data-id' => deal_status.id, onclick: "chk_radio_button(#{deal_status.id},'stage', this)", id: "btn_#{deal_status.id}"}
+                        .stage_c{style: 'margin: 2px', value: deal_status.id, stage_name: deal_status.name, name: 'stage'}
+                          = deal_status.name
   -# {id:"stage_#{status.id}", style: "margin-left:-10px;cursor:pointer;",}
   .row
     .cb10
@@ -821,19 +841,22 @@
     }
   }
   $(function() {
+    $("#lead-stage-slider").on("click", function() {
+      $("#lead-stage-content").slideToggle(500);
+    });
     $( "#sortable" ).sortable({
       stop: function(event, ui) {
         var data = {};
         $("#sortable .col-md-2").each(function(i, el){
           data[$.trim($(el).text())] = $(el).index() + 1;
         });
-        console.log(data);
         $.ajax({
           url: 'settings/update_stage_sequence',
           type: 'POST',
           data: {sorted: data}
         });
-      }
+      },
+      helper : 'clone'
     });
 
     $('#deal_from').datepicker({dateFormat: 'dd-mm-yy',autoclose: true})
