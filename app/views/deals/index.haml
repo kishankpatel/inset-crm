@@ -161,7 +161,7 @@
               %th{role: 'row', style: 'cursor: pointer;'}
                 Lead's Process Flow &nbsp;
                 .label_arrow{style: "display: inline-block"}
-                  %span.glyphicon.glyphicon-chevron-down
+                  %span.glyphicon.glyphicon-chevron-down#chevron
         #lead-stage-content{style: 'display: none;'}
           %table.table
             %tbody
@@ -842,7 +842,17 @@
   }
   $(function() {
     $("#lead-stage-slider").on("click", function() {
-      $("#lead-stage-content").slideToggle(500);
+      $("#lead-stage-content").slideToggle(500, function() {
+        var chevron = $("#chevron");
+        if (chevron.hasClass('glyphicon-chevron-down')) {
+          chevron.removeClass('glyphicon-chevron-down');
+          chevron.addClass('glyphicon-chevron-up');
+        }
+        else {
+          chevron.removeClass('glyphicon-chevron-up');
+          chevron.addClass('glyphicon-chevron-down');
+        }
+      });
     });
     $( "#sortable" ).sortable({
       stop: function(event, ui) {
