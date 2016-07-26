@@ -144,7 +144,14 @@
   }
   .btn-highlighed {
     border: 1px solid #4A72B8 !important;
-    background: url("/images/check-mark.png") no-repeat 0 0;
+  }
+  .btn-check-sign {
+    background: url("/images/check-mark.png") no-repeat 0 0 / 18px auto;
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    right: -7px;
+    top: -6px;
   }
   .table > tbody > tr > td {
     border-top: none;
@@ -175,6 +182,7 @@
                       .col-md-2.ui-state-default.btn.btn-default.filterSelectDropdow{style: 'margin: 3px', 'data-id' => deal_status.id, onclick: "chk_radio_button(#{deal_status.id},'stage', this)", id: "btn_#{deal_status.id}"}
                         .stage_c{style: 'margin: 2px', value: deal_status.id, stage_name: deal_status.name, name: 'stage'}
                           = deal_status.name
+                        %div{id: "selected_image_#{deal_status.id}"}
   -# {id:"stage_#{status.id}", style: "margin-left:-10px;cursor:pointer;",}
   .row
     .cb10
@@ -1876,6 +1884,7 @@
     else if(id == "stage"){
       $('.'+class_n).removeAttr('checked');
       $('.ui-state-default').removeClass('btn-highlighed');
+      $('.btn-check-sign').removeClass('btn-check-sign');
     }
     else
     {
@@ -1933,6 +1942,7 @@
     $('.next_c').removeAttr('checked');
     $('.stage_c').removeAttr('checked');
     $('.ui-state-default').removeClass('btn-highlighed');
+    $('.btn-check-sign').removeClass('btn-check-sign');
 
     //$('#filter_created_by').prop('selectedIndex',0);
     //$('#filter_assigned_to').prop('selectedIndex',0);
@@ -2169,14 +2179,17 @@
     {
      if ($("#stage_"+ id).prop("checked") == false) {
       $("#btn_"+ id).removeClass('btn-highlighed');
+      $("#selected_image_"+ id).removeClass('btn-check-sign');
      }
      if (inputNode) {
       if($(inputNode).hasClass('btn-highlighed')) {
         $(inputNode).removeClass('btn-highlighed');
+        $("#selected_image_"+ id).removeClass('btn-check-sign');
         $("#stage_"+id).removeAttr("checked");
       }
       else {
         $(inputNode).addClass('btn-highlighed');
+        $("#selected_image_"+ id).addClass('btn-check-sign');
         $("#stage_"+id).prop("checked", true);
       }
      }
@@ -2185,6 +2198,7 @@
          var values = $(this).val();
          $("#stage_"+values).attr("checked", true);
          $("#btn_"+values).addClass('btn-highlighed');
+         $("#selected_image_"+values).addClass('btn-check-sign');
        });
      }
     }
