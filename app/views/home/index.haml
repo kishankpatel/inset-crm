@@ -130,7 +130,12 @@
 - if !params[:t].nil? || !params[:t].blank?
   = render :partial => "devise/registrations/new"
 :javascript
-  $(document).ready(function() {    
+  $(document).ready(function() {
+      $('#free_signup').click(function(){
+        $('html, body').animate({
+          scrollTop: $(".beta_form").offset().top
+        }, 2000);
+      });
       if('#{@buser_email}' != ""){
         //$("#user_email").val('ddddd');
         //alert("#{@buser_email}")

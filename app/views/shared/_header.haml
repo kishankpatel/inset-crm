@@ -212,7 +212,8 @@
       .navbar-collapse.collapse
         %ul.nav.navbar-nav.navbar-right
           %li
-            %a{href: "#{new_user_registration_path}", :id=>"free_signup", rel: "nofollow", class: "signup_or"}
+            //"#{new_user_registration_path}"
+            %a{href: "javascript:void()" , :id=>"free_signup", rel: "nofollow", class: "signup_or"}
               FREE Sign up
           /%li
           /  %button.btn.btn-success.btn-sm{type: "button", onclick: "window.location='http://wakeupsales.org/download/V1/railscrm.zip'", :style=>"font-weight:bold;margin-top:12px;line-height:1.2;font-size:14px;"}
