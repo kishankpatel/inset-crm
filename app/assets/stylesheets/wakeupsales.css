@@ -391,6 +391,8 @@ table.profile_tbl tr td, table.profile_tbl tr th{padding-top:10px}
 .table.t-bord > thead > tr > th{border-top:1px solid #DDDDDD !important;border-bottom:1px solid #ddd;font-size:15px}
 .table.t-bord > tbody > tr > td{color:#3D6B9D}
 .mtop30{margin-top:30px}
+.mtop10{margin-top:10px}
+.glyphicon{margin-right: 5px;}
 .nav.settings-navleft li a{color:#9A9A9A;padding:8px 0 8px 20px;margin-left:20px;outline:none} 
 .nav.settings-navleft li a:hover, .nav.settings-navleft li a:focus, .nav.settings-navleft li.active a{background:#CCCCCC;color:#666666;border-radius:6px 0 0 6px}
 .nav.settings-navleft li.hd_active a, .nav.settings-navleft li.hd_active a:hover, .nav.settings-navleft li.hd_active a:focus{background:none;cursor:default;color:#333333;font-size:16px;}
@@ -476,7 +478,7 @@ table.profile_tbl tr td, table.profile_tbl tr th{padding-top:10px}
 }
 
 .nav .open > a:focus{border-color:#3c8e7d}
-.navbar-nav > li > .dropdown-menu{border:3px solid #67bbaa;border-top:none;min-width:160px;}
+.navbar-nav > li > .dropdown-menu{border:3px solid #428fd0;border-top:none;min-width:160px;}
 .navbar-nav > li > .dropdown-menu > li > a{padding:10px 20px;}
 .dropdown-menu .divider{margin:0}
 .dropdown-menu > li > a{padding: 5px 20px;}
