@@ -146,7 +146,7 @@
   .modal-footer
     .navbar-left
       .col-md-12.p0
-        %button.btn.btn-primary{type: "submit","data-disable-with" => "Saving...", :onclick=>"$('#is_update_contact').val('false');",:id=>"contact_update_btn",:onclick=> "return validate_email_contact()"} Update
+        %button.btn.btn-primary.btn-success{type: "submit","data-disable-with" => "Saving...", :onclick=>"$('#is_update_contact').val('false');",:id=>"contact_update_btn",:onclick=> "return validate_email_contact()"} Update
         %a{href:"#", "aria-hidden" => "true","data-dismiss" => "modal"}
           %span.c_links Cancel        
 :javascript

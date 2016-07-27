@@ -333,7 +333,7 @@
                       .cb10
                       =text_field_tag "deal_to","",value: "",class: "form-control typeahead",placeholder: "To"
                       .cb10
-                      %button.btn.btn-primary{class: "filterSelectDropdow",type: "button",rel: "tooltip", title: "Filter" } 
+                      %button.btn.btn-primary.btn-success{class: "filterSelectDropdow",type: "button",rel: "tooltip", title: "Filter" } 
                         Search
 
               %li.divider
@@ -380,7 +380,7 @@
                       %li.divider
               
         %a#additional_links{"data-toggle" => "modal", href: "#dealModal", onclick: "$('#new_deal')[0].reset();$('.error').html('');", style: "text-decoration:none;"}
-          %button.btn.btn-primary.p5{type: "button",rel: "tooltip", title: "Add a Deal" }
+          %button.btn.btn-primary.btn-success.p5{type: "button",rel: "tooltip", title: "Add a Deal" }
             %span.glyphicon.glyphicon-plus-sign
             Add a Lead
         %a#additional_links{"data-toggle" => "modal", href: "#BulkLeadModal", rel: "popup", title: "Bulk lead upload", style: "background-color: white;"}

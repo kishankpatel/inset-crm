@@ -34,7 +34,7 @@
           .cb10
           .modal-footer
             .pull-left
-              %button.btn.btn-primary{type: "submit", onclick: "task_out_chk();getda('hidden_outcome');"} Done
+              %button.btn.btn-primary.btn-success{type: "submit", onclick: "task_out_chk();getda('hidden_outcome');"} Done
               %button.btn.btn-default{"data-dismiss" => "modal", type: "button", onclick: "clear_task_out();complete_this_task();getda('hidden_outcome');"} Skip
               %a{href:"#", "aria-hidden" => "true","data-dismiss" => "modal",onclick: "uncheck_task_chkbox()"}
                 %span.c_links

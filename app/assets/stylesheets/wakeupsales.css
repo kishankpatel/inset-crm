@@ -36,20 +36,20 @@
 }
 
 body, html{
-margin:0px;padding:0px;background:#F3F3F5;
+margin:0px;padding:0px;background:#f1f1f1 none repeat scroll 0 0;
 font-family: 'SourceSansPro-Regular';
 }
 .modal{overflow-y: hidden;}
 .modal-open {overflow: visible;}
 .jumbotron{padding:0px;background:#fcfcfc;border-bottom: 1px solid #dddddd;margin-bottom: 20px;text-align: center;}
 .navbar{margin-bottom:0px;}
-.navbar-default{background:#42b475;border:none;border-radius: 0;}
+.navbar-default{background:#428fd0;border:none;border-radius: 0;}
 .navbar-header{width:auto;border:none;box-shadow:none;padding-right:4px;}
 .navbar-brand{padding: 8px 15px;}
 .navbar-nav > li > a{ border-right: 1px solid #c0f3e9;line-height: 25px;box-shadow: 1px 0 #3c8e7d;padding: 14px 12px; font-family: 'SourceSansPro-Regular';}
 .border-box{border-right: 1px solid #c0f3e9;box-shadow: 1px 0 #3c8e7d;height:48px}
-.navbar-nav.hmenu li:hover{background:#51c585;}
-.navbar-nav.hmenu  li.activ_mnu {color:#ffffff;background:#51c585;}
+.navbar-nav.hmenu li:hover{background:#428fd0;}
+.navbar-nav.hmenu  li.activ_mnu {color:#ffffff;background:#428fd0;}
 .navbar-default .navbar-nav > li > a{color:#fff;height:50px;outline:none}
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus{color:#fff}
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus{background-color: inherit;color:#fff}
@@ -259,8 +259,8 @@ font-family: 'SourceSansPro-Regular';
 .nav > li.activ_mnu .slide_m{display:inline !important}
 .count_total{color:#78808a;font-size:18px;margin-left:10px;margin-top:0px;text-shadow:0px 0px 2px #fff}
 .input-group .form-control.srch_fld {
-    background:#b4f5e8;
-    border: 1px solid #9de9da;
+    /*background:#b4f5e8;
+    border: 1px solid #9de9da;*/
     border-radius: 13px !important;
     font-size: 12px;
     height: 22px;
@@ -268,7 +268,7 @@ font-family: 'SourceSansPro-Regular';
     padding: 0 25px 2px 12px;
     width: 100px;
 	}
-.nav_srch_box{background: url("/assets/srch_i.png") no-repeat scroll center center;cursor: pointer;border-radius: 0 23px 23px 0;height:16px;width:26px;outline:none;border:none;position: absolute;right:8px;top:17px;}
+.nav_srch_box{background: url("/assets/search-v1.png") no-repeat scroll center center;cursor: pointer;border-radius: 0 23px 23px 0;height:16px;width:26px;outline:none;border:none;position: absolute;right:8px;top:17px;}
 .soc_skyp{background:url("/assets/wus_sprite.png") no-repeat -109px -182px;height:16px;width:16px;position:relative;margin:0 1px;top:3px;display: inline-block;}
 .badge-important{
    background-color: #fe5d5d;

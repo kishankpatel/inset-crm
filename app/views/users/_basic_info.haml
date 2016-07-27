@@ -16,7 +16,7 @@
                 = form_for @user, :html => { :class => 'form-horizontal' } do |f|
                   = f.file_field "profile_image", onchange: "return checkFile_withtype(this)"
                   %br
-                  =f.submit "Update", :onclick => "return chk_file_present()", :class=>"btn btn-primary btn-sm", :disable_with => "Updating...."
+                  =f.submit "Update", :onclick => "return chk_file_present()", :class=>"btn btn-primary btn-success btn-sm", :disable_with => "Updating...."
         %hr/
       %table.table.table-condensed
         %thead

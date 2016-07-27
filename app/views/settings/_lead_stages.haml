@@ -1,7 +1,7 @@
 .mtop30
   .navbar-right
     %a#addnewlabel.easyui-linkbutton{href: '#leadStageModal', 'data-toggle' => 'modal', onclick: '$("#lead_error").hide();'}
-      %button.btn.btn-primary.pad2{type: 'button'}
+      %button.btn.btn-primary.btn-success.pad2{type: 'button'}
         %span.glyphicon.glyphicon-plus-sign
         New Lead Stage
   %h4 Manage Lead Stages
@@ -17,7 +17,7 @@
         %span.text-danger#error_content{style: 'display: none'}
           %p Selected Lead Stages can't be empty
           %br
-        %a{href: 'javascript:', class: 'btn btn-primary', value: 'Save', onclick: 'submitData(); return false;'}Save
+        %a{href: 'javascript:', class: 'btn btn-primary btn-success', value: 'Save', onclick: 'submitData(); return false;'}Save
 
 #leadStageModal.modal.fade{'aria-hidden' => 'true', 'aria-labelledby' => 'myModalLabel', role: 'dialog', tabindex: '-1'}
   .modal-dialog
@@ -35,7 +35,7 @@
               =f.text_field :name, :required => true, :class=> 'col-md-12 form-control', :maxlength=> '50', :style=> 'height:41px; resize: none;', :placeholder => 'Lead Stage Name*'
           .modal-footer
             .pull-left
-              %button.btn.btn-primary{type: 'submit', id: 'deal_submit_btn'} Save
+              %button.btn.btn-primary.btn-success{type: 'submit', id: 'deal_submit_btn'} Save
               %a{href:'javascript:', 'aria-hidden' => 'true', 'data-dismiss' => 'modal'}
                 %span.c_links
                   Cancel

@@ -75,7 +75,7 @@
     .modal-footer
       .navbar-left
 
-        =f.submit "Create Task", :class=> "btn btn-primary",:onclick=> "return validate_email('task_mail_to')", :disable_with => "Please wait ..."
+        =f.submit "Create Task", :class=> "btn btn-primary btn-success",:onclick=> "return validate_email('task_mail_to')", :disable_with => "Please wait ..."
         %a{href:"#", "aria-hidden" => "true","data-dismiss" => "modal"}
           %span.c_links
             Cancel

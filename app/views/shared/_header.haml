@@ -37,7 +37,8 @@
         %span.icon-bar
         %span.icon-bar
       =link_to (user_signed_in? ? "/dashboard" : "/"), class: "navbar-brand" do
-        =image_tag (!user_signed_in? ? "new_logo_home2.png" : "new_logo_i.png")
+        /=image_tag (!user_signed_in? ? "new_logo_home2.png" : "new_logo_i.png")
+        =image_tag ("wakeup-salelogo-v1.png"), :style => "height:35px;"
 
     - if user_signed_in?
       =hidden_field_tag "ref_page_info", "#{params[:controller]+params[:action]}"
@@ -255,13 +256,13 @@
                   - if devise_mapping.rememberable?
                     = f.check_box :remember_me
                     Remember me
-                  %button.btn.btn-primary.btn-block{type: "submit"}
+                  %button.btn.btn-primary.btn-success.btn-block{type: "submit"}
                     Sign in
                   = link_to "Forgot password?", "javascript:void(0)", :onclick => "$('#signin_popup').hide();$('#forgot_pwd_popup').show();$('#fpwd_form')[0].reset();"
               #forgot_pwd_popup{style: "display:none"}
                 = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, :class => "form-horizontal", :id=>"fpwd_form" }) do |f|
                   = f.email_field :email, :required => true, :class=>"form-control", :placeholder=>"Email", :style=>""
                   %br/
-                  %button.btn.btn-primary.btn-block{type: "submit"}
+                  %button.btn.btn-primary.btn-success.btn-block{type: "submit"}
                     Send instructions
                   = link_to "Sign In", "javascript:void(0)", :onclick => "$('#forgot_pwd_popup').hide();$('#signin_popup').show();$('#signin_form')[0].reset();"

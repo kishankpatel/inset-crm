@@ -205,4 +205,12 @@ class Notification < ActionMailer::Base
     @location = location
     mail(to: "support@wakeupsales.org", subject: "Free Download WakeUpSales Community Edition")
   end
+  def send_beta_request_to_admin(email)
+    @email = email
+    mail(to: "ansuman.taria@andolasoft.co.in", subject: "New beta request")
+  end
+  def send_beta_request_to_user(email)
+    @email = email
+    mail(to: "ansuman.taria@andolasoft.co.in", subject: "New beta request")
+  end
 end

@@ -254,13 +254,13 @@
 
         - if (@contact.present? && @contact.contact_status && ((@contact.is_public?) || ((@contact.created_by == current_user.id) || (current_user.is_admin?))))
 
-          %a{"data-toggle" => "modal", title:"Add a Lead", rel:"tooltip", href: "#dealModal", class: "btn btn-primary pad2", onclick: "$('#new_deal')[0].reset();$('#deal_first_name').val(\"#{contact_name}\");$('#hfield').val(\"#{@contact.id}\");$('#deal_email').val(\"#{@contact.email}\");$('#deal_country').val(\"#{@contact.address.present? ? @contact.address.country_id : ""}\");$('#deal_work_phone').val(\"#{!@work_phone.blank? ? @work_phone.first.phone_no : ''}\");$('#deal_country').trigger('change');$('#deal_contact_id').val(\"#{@contact.id}\");$('#company_type').val(\"#{@contact.class.name}\");$('#deal_first_name').attr('disabled', true);"}
+          %a{"data-toggle" => "modal", title:"Add a Lead", rel:"tooltip", href: "#dealModal", class: "btn btn-primary btn-success pad2", onclick: "$('#new_deal')[0].reset();$('#deal_first_name').val(\"#{contact_name}\");$('#hfield').val(\"#{@contact.id}\");$('#deal_email').val(\"#{@contact.email}\");$('#deal_country').val(\"#{@contact.address.present? ? @contact.address.country_id : ""}\");$('#deal_work_phone').val(\"#{!@work_phone.blank? ? @work_phone.first.phone_no : ''}\");$('#deal_country').trigger('change');$('#deal_contact_id').val(\"#{@contact.id}\");$('#company_type').val(\"#{@contact.class.name}\");$('#deal_first_name').attr('disabled', true);"}
 
             %span.glyphicon.glyphicon-plus-sign
 
             New Lead
 
-          %a{"data-toggle" => "modal", href: "#taskModal", class: "btn btn-primary pad2",onclick: "$('#task_form')[0].reset();setTimeout(\"$('#deal_title_task').val('#{@contact.title}');$('#hfield').val('#{@contact.id}');task_deal('#{@contact.id}')\",1000);$('#deal_title_task').attr('disabled', true);$('#taskable_id').val(\"#{@contact.id}\");$('#taskable_type').val(\"#{@contact.class.name}\");", "data-id" => @contact.id,rel: "tooltip", title: "Add a Task"}
+          %a{"data-toggle" => "modal", href: "#taskModal", class: "btn btn-primary btn-success pad2",onclick: "$('#task_form')[0].reset();setTimeout(\"$('#deal_title_task').val('#{@contact.title}');$('#hfield').val('#{@contact.id}');task_deal('#{@contact.id}')\",1000);$('#deal_title_task').attr('disabled', true);$('#taskable_id').val(\"#{@contact.id}\");$('#taskable_type').val(\"#{@contact.class.name}\");", "data-id" => @contact.id,rel: "tooltip", title: "Add a Task"}
 
             %span.glyphicon.glyphicon-plus-sign
 
@@ -546,7 +546,7 @@
 
               %br
 
-              %button.btn.btn-primary{type: "submit", disable_with: "Please wait...", id: "notes_submit_btn",onclick: "getd();"} Add a Note
+              %button.btn.btn-primary.btn-success{type: "submit", disable_with: "Please wait...", id: "notes_submit_btn",onclick: "getd();"} Add a Note
 
               %button.btn.btn-default{type: "button",onclick: "remove_note();"} Cancel
 

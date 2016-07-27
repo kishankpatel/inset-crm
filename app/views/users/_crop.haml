@@ -38,7 +38,7 @@
       - for attribute in [:crop_x, :crop_y, :crop_w, :crop_h]
         = i.hidden_field attribute, :id => attribute
     %br
-    %button.btn.btn-primary{type: "submit", disable_with: "Please wait...", id: "crop_submit_btn"} Crop Image
+    %button.btn.btn-primary.btn-success{type: "submit", disable_with: "Please wait...", id: "crop_submit_btn"} Crop Image
     #crop_output
     /%p= f.submit "Crop"
 :javascript

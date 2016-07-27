@@ -325,7 +325,7 @@
                 .cb
                 #show_file_name{style: "background: #f1f5fa;padding: 10px;width: 65%;margin: 5px;display:none"}
                 %br
-                %button.btn.btn-primary{type: "submit", disable_with: "Please wait...", id: "notes_submit_btn",onclick: "getd('hidden_note');"} Add Note
+                %button.btn.btn-primary.btn-success{type: "submit", disable_with: "Please wait...", id: "notes_submit_btn",onclick: "getd('hidden_note');"} Add Note
                 %button.btn.btn-default{type: "button",onclick: "remove_note();"} Cancel
                 
           .cb
@@ -444,7 +444,7 @@
                 = text_field_tag :work_phone,"", :id=>"work_phone",:value=>"", :class => "form-control bfh-phone","data-format"=>" (ddd) ddd-dddd",:placeholder=>"(999) 999 9999", :required => true
           .modal-footer
             .pull-left
-              %button.btn.btn-primary{type: "submit",id: "add_con","data-disable-with" => "Saving...", onclick: "return chk_con_id();"} Save  
+              %button.btn.btn-primary.btn-success{type: "submit",id: "add_con","data-disable-with" => "Saving...", onclick: "return chk_con_id();"} Save  
               %a{href:"#", "aria-hidden" => "true","data-dismiss" => "modal"}
                 %span.c_links
                   Cancel
@@ -477,7 +477,7 @@
           
         .modal-footer{style: "margin-bottom:15px"}
           .pull-left
-            %button.btn.btn-primary{type: "submit",id: "add_con","data-disable-with" => "Saving...", onclick: "return chk_con_id();"} Save  
+            %button.btn.btn-primary.btn-success{type: "submit",id: "add_con","data-disable-with" => "Saving...", onclick: "return chk_con_id();"} Save  
             %a{href:"#", "aria-hidden" => "true","data-dismiss" => "modal"}
               %span.c_links
                 Cancel

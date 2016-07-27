@@ -224,6 +224,7 @@ SalesCafe::Application.routes.draw do
   match 'lead_age_bar_chart' => 'reports#lead_age_bar_chart'
 
   resources :beta_accounts
+  match 'save_user' => 'beta_accounts#save_user'
   match 'bconfirm' => 'beta_accounts#verify_user'
   match 'approve/:buser_id' => 'beta_accounts#approve'
   match 'disapprove/:buser_id' => 'beta_accounts#disapprove'

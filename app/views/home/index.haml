@@ -1,16 +1,37 @@
 = stylesheet_link_tag "home"
-.con-body{:style=>"min-height:500px"}
+.con-body
   .container
     .jumbotron
       .navbar-left.col-md-12.p0
-        %h1
-          WAKEUPSALES
-        %h3
-          A Simple CRM to boost your Sales
+        %h3  
+          Cloud CRM Tool for You and Your Team
+        //%h3
+        //  A Simple CRM to boost your Sales
 
 
 
-        .form_txt 
+        /.form_txt
+        /  - @beta_request = BetaRequest.new
+        /  = form_for @beta_request, :url => beta_request_path, :html => { :class => 'form-inline' } do |f|
+        /    %div.text-center
+        /      = f.email_field "email", :class => "txt_box", :required => true, :autocomplete => "on", :placeholder => "Email Address"
+        /    %div
+        /      = f.submit "Sign Up", :disable_with => "Submitting....", :onclick=> "return chk_validemail('beta_request_email')"
+
+        %div{:style=>"min-height:400px"}
+        .beta_form
+          .beta_mail
+            - @user = User.new
+            #msg-div.text-center
+            = form_for @user, :url => save_user_path, :html => { :class => 'form-inline' } do |f|
+              .text-center.txt_btn
+                .fl.mail_dl_osc
+                  = f.email_field "email", :class => "beta_txt_box", :required => true, :autocomplete => "off", :placeholder => "Email Address"
+                .fl.password_icon
+                  = f.password_field "password", :class => "beta_txt_box", :required => true, :placeholder => "Password", :style => "margin-left:5px;"
+                .fl.sub-form1
+                  = f.submit "Sign Up", :disable_with => "Submitting....", :class => "sub-form", :onclick=> "return chk_validemail('beta_request_email')", :style => "margin-left:10px;"
+                .cb
         /Try WakeUpSales for FREE!
         /- @beta_user = BetaAccount.new
         /= form_for @beta_user, :html => { :class => 'form-inline' } do |f|
@@ -18,8 +39,6 @@
         /    = f.email_field "email", :class => "txt_box", :required => true, :autocomplete => "on", :placeholder => "Your Email Address"
         /    %div
         /      = f.submit "Create my Beta Account", :class=>"sign", :disable_with => "Submitting....", :onclick=> "return chk_validemail('beta_account_email')"
-
-
         .cb
     .cb10
 .cb
@@ -125,7 +144,10 @@
       if('#{cookies[:redirect_deal_id]}' != ''){
         setTimeout('redirect_deal()', 5000);
         $.removeCookie("redirect_deal_id");
-      }      
+      }
+      $('#new_beta_request').bind('ajax:complete', function(e, data, status, xhr) {
+        alert(data.responseText)
+      });
     });
     function redirect_deal()
     {
@@ -138,8 +160,9 @@
       var dotpos=email_id.lastIndexOf(".");
       if (email_id != '' && (atpos<1 || dotpos<atpos+2 || dotpos+2>=email_id.length))
         {
-         alert('Please enter a valid email address.')
-         $("#"+type+"").focus();
+         //alert('Please enter a valid email address.')
+         $("#msg-div").text("Please enter a valid email address.");
+         //$("#"+type+"").focus();
          return false;
         }
       else
@@ -147,3 +170,4 @@
         return true;
       }
     }
+

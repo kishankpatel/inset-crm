@@ -118,9 +118,19 @@ class BetaAccountsController < ApplicationController
   end
  end
 
-
-
-
-
-
+ def save_user
+    user = User.find_by_email params[:user][:email]
+    if user.present?
+       msg = "Email id already registered."
+     else
+      if user = User.create(:email => params[:user][:email], :password => params[:user][:password])
+        Notification.send_beta_request_to_admin(user.email).deliver
+        Notification.send_beta_request_to_user(user.email).deliver
+        msg = "Thanks for registering."
+      else
+        msg = "Something went wrong."
+      end
+    end
+    redirect_to root_path, flash: {notice: msg}
+  end
 end

@@ -36,5 +36,5 @@
                 =f.select :taskable_id, current_user.organization.deals.find(:all).collect {|c| [ c.title, c.id ]}, {:include_blank => '- Assign Deal -'},:class=>"col-md-12 form-control", :required => true
                 =hidden_field_tag :taskable_type,"Deal"
             .form-actions
-              =f.submit "Update Task", :class=> "btn btn-primary"
+              =f.submit "Update Task", :class=> "btn btn-primary btn-success"
               =link_to "Cancel",tasks_path,:class=>"btn btn-default"

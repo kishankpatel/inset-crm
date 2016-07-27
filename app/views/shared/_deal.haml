@@ -96,8 +96,8 @@
                 =f.text_field :work_phone,:class=>"form-control bfh-phone",:type=>"text","data-format"=>" (ddd) ddd-dddd",:placeholder=>"(999) 999 9999", :onblur => "this.value = jQuery.trim((this.value).replace(/^\s*/g,''))",:onclick =>"this.value = jQuery.trim((this.value).replace(/^\s*/g,''))"
           .modal-footer
             .pull-left
-              %button.btn.btn-primary{type: "submit",id: "deal_submit_btn"} Save
-              %button.btn.btn-primary{type: "submit",id: "deal_submit_more"} Save & add more
+              %button.btn.btn-primary.btn-success{type: "submit",id: "deal_submit_btn"} Save
+              %button.btn.btn-primary.btn-success{type: "submit",id: "deal_submit_more"} Save & add more
               %a{href:"#", "aria-hidden" => "true","data-dismiss" => "modal"}
                 %span.c_links
                   Cancel

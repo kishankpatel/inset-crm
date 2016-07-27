@@ -30,7 +30,7 @@
             = file_field_tag :attachment_lead, :class=>"", :onchange => "checkFile_withtypecsv(this)"
           .modal-footer#proceed_btn_lead.displaynone
             .navbar-left
-              %button.btn.btn-primary{type: "submit", disable_with: "Please wait...", id: "lead_upload_submit_btn", onclick: ""} Preview
+              %button.btn.btn-primary.btn-success{type: "submit", disable_with: "Please wait...", id: "lead_upload_submit_btn", onclick: ""} Preview
               %a{href:"#", "aria-hidden" => "true","data-dismiss" => "modal"}
                 %span.c_links
                   Cancel

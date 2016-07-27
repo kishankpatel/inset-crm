@@ -31,8 +31,8 @@ class User < ActiveRecord::Base
   scope :by_active, lambda{where("is_active = ?", true)}
   
   def create_default_data
-     Widget.create :organization_id => self.organization.id, :user => self
-     UserPreference.create :organization_id => self.organization.id, :user => self
+     Widget.create :organization_id => self.organization.present? ? self.organization.id : nil, :user => self
+     UserPreference.create :organization_id => self.organization.present? ? self.organization.id : nil, :user => self
   end
   # def name
     # if first_name.present? && last_name.present?

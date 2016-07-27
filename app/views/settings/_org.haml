@@ -99,6 +99,6 @@
             = (user= User.where("email=?",current_user.organization.email).last).present? ? user.time_zone : "NA"
           .cb10
   %center
-    %button.btn.btn-primary{type: "button",onclick: "show_edit_form()"} Edit
+    %button.btn.btn-primary.btn-success{type: "button",onclick: "show_edit_form()"} Edit
 
 = render :partial => "org_edit"

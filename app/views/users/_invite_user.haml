@@ -68,7 +68,7 @@
           .modal-footer
             .pull-left
               /%button.btn.btn-default{"data-dismiss" => "modal", type: "button"} Close
-              =f.submit "Save", :class=>"btn btn-primary", :disable_with => "Please wait ...",:onclick=> "return validate_email('user_email')"
+              =f.submit "Save", :class=>"btn btn-primary btn-success", :disable_with => "Please wait ...",:onclick=> "return validate_email('user_email')"
               %a{href:"#", "aria-hidden" => "true","data-dismiss" => "modal"}
                 %span.c_links
                   Cancel

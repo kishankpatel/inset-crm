@@ -111,7 +111,7 @@
         %ul.dropdown-menu.show_menu{role: "menu"}
           %li.arrow_top{style: "margin-left:87px;z-index:99"}
           %li.dropdown-submenu
-            %a{href: "javascript:void(0)","data-toggle"=>"dropdown",onclick: "show_hide_submenu('deal_type');"} Deal Type
+            %a{href: "javascript:void(0)","data-toggle"=>"dropdown",onclick: "show_hide_submenu('deal_type');"} Lead Type
             #dtype{style: "display: none;position:absolute;left:145px;top:-11px;"}
               .arrow_left.deal_arw{style: "display:none;"}
               %ul#cre_by_app.dropdown-menu{style: "height:200px;overflow-y:scroll;overflow-x:hidden;display:inline-block;position:relative;"}
@@ -183,7 +183,7 @@
     /    %span.glyphicon.glyphicon-filter
     /    Filter 
     %a{"data-toggle" => "modal", href: "#taskModal", onclick: "$('#task_form')[0].reset();$('#clicked_button_ref').val(check_active_tab());$('#email_err').html('');",rel: "tooltip", title: "Add a task"}
-      %button.btn.btn-primary.p5{type: "button"}        
+      %button.btn.btn-primary.btn-success.p5{type: "button"}        
         %span.glyphicon.glyphicon-plus-sign 
         Add a Task               
 

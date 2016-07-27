@@ -12,7 +12,7 @@
               =f.text_field :name, :required => true,:name=> "value" ,:class=> "col-md-8 form-control",:html=>{:maxlength=> "100"}, :onblur =>"this.value = jQuery.trim((this.value).replace(/^\s*/g,''))",:style=> "resize: none;" 
               %label{id: "show_err",class: "error"}
             .form-group.col-md-2 
-              %button.btn.btn-primary{type: "submit"} 
+              %button.btn.btn-primary.btn-success{type: "submit"} 
                 %span.glyphicon.glyphicon-ok
             .form-group.col-md-2 
               %button.btn.btn-default{"aria-hidden" => "true", "data-dismiss" => "modal"}

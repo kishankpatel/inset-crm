@@ -43,7 +43,8 @@ font-family: 'SourceSansPro-Regular';
 .container .jumbotron h3{font-size:51px;color:#ffffff;text-align:center}
 
 .navbar{margin-bottom:0px;}
-.navbar-default{background: url("/assets/h-bg.jpg") repeat-x #f2f2f2;border:none;border-radius: 0;}
+/*.navbar-default{background: url("/assets/h-bg.jpg") repeat-x #f2f2f2;border:none;border-radius: 0;}*/
+.navbar-default{background: #428fd0;border:none;border-radius: 0;}
 .navbar-header{width:auto;border:none;box-shadow:none;padding-right:4px;}
 .navbar-brand{padding:11px}
 .navbar-nav > li > a{line-height: 25px;padding:14px 0px;font-family: 'SourceSansPro-Semibold';font-size:18px;margin-left: 36px;}
@@ -138,10 +139,22 @@ a.tn{text-decoration: none;}
 .flw4:hover{background:url(/assets/footer_sprite1.png) no-repeat -83px -25px;}
 .ft_flw_div{width:200px;margin-top:20px}
 .ft_dev{color:#ffffff; font-size:12px;text-align:center;margin:10px 0;}
-.con-body{background:url(/assets/body_wus.jpg) no-repeat center top / cover #89c33c;padding:20px 0 50px;border:2px solid #cccccc;border-left:none;border-right:none;	
+.con-body{background:url(/assets/body_wus_v1.jpg) no-repeat center top / cover #89c33c;padding:20px 0 50px;border:2px solid #cccccc;border-left:none;border-right:none;	
   box-shadow: 0 0 8px #444444 inset;
 	-webkit-box-shadow: 0 0 8px #444444 inset;
 	-moz-box-shadow: 0 0 8px #444444 inset}
+
+  .beta_mail .mail_dl_osc input {background: url(/assets/email_new.png) no-repeat right 15px center;}
+  .beta_mail .password_icon input {background: url(/assets/password_new.png) no-repeat right 15px center;}
+  .sub-form {
+      background: #42b475;color: #fff;border: 2px solid #42b475;margin: 0 10px;
+      display: inline-block;text-decoration: none;text-align: center;text-transform: uppercase;font-size: 20px;font-weight: 500;padding: 15px 10px;line-height: 31px;width: 160px;font-family: 'SourceSansPro-Regular';}
+  .beta_form {width: 948px;margin: 0 auto;padding-top: 20px;}
+  .beta_txt_box{margin: 0;padding: 15px 20px;height: auto;border: 2px solid #42b475;color: #fff;
+    font-family: 'SourceSansPro-Regular';font-size: 22px;width: 100%;box-sizing: border-box;border-radius: 5px;}
+  .txt_btn{margin: 0px auto;}
+
+#msg-div{color:#FF0000;font-size:20px;font-weight:bold;}
 .signup_or{font-size:18px;color:#fff !important;width:131px;height:35px !important;background:#ed5565 !important;border:none !important;box-shadow: none !important;padding:5px 7px 5px 15px !important;margin-top:8px; border-radius: 4px;
   transition: all 0.2s linear 0s;
   -moz-transition: all 0.2s linear 0s;

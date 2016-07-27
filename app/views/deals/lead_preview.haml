@@ -21,7 +21,7 @@
                 .row{style: "margin: 14px;"}
                   .col-md-6
                     /%button.btn.btn-primary.pull-right{type: "button", "data-disable-with" => "Saving...", onclick: "return validate_fields()"} Confirm
-                    = link_to "Confirm",save_lead_path,:class=>"btn btn-primary pull-right", :onclick=> "return validate_fields()"
+                    = link_to "Confirm",save_lead_path,:class=>"btn btn-primary btn-success pull-right", :onclick=> "return validate_fields()"
                    
                   .col-md-6
                     =link_to "Cancel",destroy_lead_path,:class=>"btn btn-default pull-left", :confirm => "Do you want to cancel and delete all the leads?"

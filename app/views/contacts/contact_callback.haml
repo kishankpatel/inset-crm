@@ -44,7 +44,7 @@
                           = distance_of_time_in_words_to_now(c[:connection_date])+" ago" if c[:connection_date].present?
               /= will_paginate @contacts if @contacts
               %br
-              %button.btn.btn-primary{type: "submit", :disable_with => "Please wait ..."} Import Contacts
+              %button.btn.btn-primary.btn-success{type: "submit", :disable_with => "Please wait ..."} Import Contacts
               =link_to "Cancel", contacts_path, :class=> "btn btn-default"
 %br
 :javascript
