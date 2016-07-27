@@ -39,6 +39,9 @@
 //= require jquery.wysiwyg
 //= require bootstrap-duallistbox
 
+//= require highcharts/highcharts
+//= require highcharts/highcharts-more
+
 //= require_self
 
 /*!
